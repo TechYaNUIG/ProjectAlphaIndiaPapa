@@ -1,8 +1,137 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/*  COLORS
+    #efefef --  LIGHT GREY
+    #24d1f9 --  LIGHT BLUE
+    #8d8d8d --  MID GREY
+    #000000 --  BLACK
+    #747474 --  DARK GREY
+    #54b936 --  GREEN
+    #fc5b57 --  RED
+*/
+
+html{
+    margin: 0;
+    padding: 0;
 }
 
-a {
-  color: #00B7FF;
+/* Round buttons */
+
+.btn-rnd{
+    border-radius: 20px;
 }
+
+/* Text area*/
+.txt-area-custom{
+    border-radius: 20px;
+    border-width: 0;
+    background-color: #efefef;
+    resize: none;
+    padding: 20px;
+}
+
+.txt-area-custom:focus{
+    outline: 0;
+    box-shadow: none;
+    background-color: #efefef;
+}
+
+/* Text input */
+.input-msg-txt{
+    border-radius: 30px;
+    border-width: 0;
+    background-color: #efefef;
+    height: 60px;
+    padding: 20px;
+}
+
+.input-msg-txt:focus{
+    outline: 0;
+    box-shadow: none;
+    background-color: #efefef;
+}
+
+/* Text input button inside */
+.input-msg-btn{
+    border-radius: 30px;
+    border-width: 0;
+    background-color: #efefef;
+    color: #24d1f9;
+    border-left-width: 4px;
+    border-color: #8d8d8d;
+    padding: 0 30px;
+}
+
+.input-msg-btn:focus{
+    outline: 0;
+    box-shadow: none;
+    background-color: #efefef;
+}
+
+/* Messages received */
+.msg-received{
+    background-color: #24d1f9;
+    padding: 20px;
+    border-radius: 30px;
+    color: #efefef;
+}
+
+/* Messages sent */
+.msg-sent{
+    background-color: #efefef;
+    padding: 20px;
+    border-radius: 30px;
+    color: #000000;
+}
+
+/* Round Checkbox */
+
+.check-container {
+    display: block;
+    position: relative;
+    padding-left: 55px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-size: 35px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+.check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}  
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid #efefef;
+}
+  
+.check-container:hover input ~ .checkmark {
+    background-color: #efefef;
+}
+  
+.check-container input:checked ~ .checkmark {
+    background-color: #54b936;
+    border: 0;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+
+.check-container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
