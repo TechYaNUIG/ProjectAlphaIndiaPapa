@@ -16,7 +16,7 @@
     height: 100%;
     margin-left: -100px;
     overflow-y: auto;
-    background:#737473;
+    background:#747474;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -32,7 +32,7 @@
     height: 100%;
     margin-left: -300px;
     overflow-y: auto;
-    background: #999999;
+    background: #8d8d8d;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
