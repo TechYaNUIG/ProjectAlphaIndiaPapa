@@ -24,7 +24,7 @@ html{
     border-radius: 20px;
     border-width: 0;
     background-color: #efefef;
-    width: 250px;
+    width: 100%;
     resize: none;
     padding: 20px;
 }
@@ -108,7 +108,7 @@ html{
 .check-container {
     display: block;
     position: relative;
-    padding-left: 55px;
+    padding-left: 45px;
     margin-bottom: 50px;
     cursor: pointer;
     font-size: 35px;
