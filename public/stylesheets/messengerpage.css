@@ -10,7 +10,10 @@
 #left-sidebar-wrapper{
     z-index: 1000;
     position: fixed;
+    display: flex;
     left:100px;
+    align-items: center;
+    justify-content: center;
     top:0;
     width:100px;
     height: 100%;
@@ -26,6 +29,9 @@
 #inner-sidebar-wrapper{
     z-index: 1000;
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     left: 405px;
     top: 0;
     width: 300px;
@@ -47,6 +53,7 @@
     background: #fff;
 }
 
+<<<<<<< HEAD
 .message-title{
     height: 5%;
     text-align: center
@@ -68,6 +75,58 @@
     width: 80%;
 }
 
+=======
+
+
+#add-task{
+    position: fixed;
+    top: 20px;
+}
+
+#add-task ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#add-task ul li{
+    padding: 2px;
+    display: inline-block;
+}
+
+#tasks-list{
+    position: fixed;
+    top: 200px;
+}
+
+#tasks-list ul{
+    position: absolute;
+    right:10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+}
+
+#tasks-list ul li{
+    margin: 5px 0;
+}
+
+#tasks-list ul li label{
+    margin: 5px 0;
+}
+
+#tasks-list ul li label span{
+    top: 2px;
+}
+
+#sign-out-button{
+    position: fixed;
+    bottom: 5%;
+    
+}
+>>>>>>> e498e472521d41f8f8e939d2f2465405966e0dd4
 
 .sidebar-nav{
     position: fixed;
@@ -95,6 +154,16 @@
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.2);
+}
+
+textarea{
+    margin-bottom: 10px;
+}
+
+h4{
+    display:block; 
+    white-space:nowrap; 
+    overflow:hidden
 }
 
 body{
