@@ -46,14 +46,36 @@
 }
 
 #message-page-wrapper{
-    width:100%;
+    padding: 20px 0;
+    max-width: 100%;
     height: 100%;
-    top:0;
-    left:410px;
     position: fixed;
     background: #fff;
 }
 
+<<<<<<< HEAD
+.message-title{
+    height: 5%;
+    text-align: center
+}
+
+.message-section{
+    background: #fff;
+    height: 85%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.message-sender-section{
+    padding: 20px 0;
+}
+
+.message-sender-input{
+    margin: 0 auto;
+    width: 80%;
+}
+
+=======
 
 
 #add-task{
@@ -104,6 +126,7 @@
     bottom: 5%;
     
 }
+>>>>>>> e498e472521d41f8f8e939d2f2465405966e0dd4
 
 .sidebar-nav{
     position: fixed;

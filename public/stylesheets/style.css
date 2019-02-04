@@ -59,6 +59,7 @@ html{
     border-left-width: 4px;
     border-color: #8d8d8d;
     padding: 0 30px;
+    margin: 0;
 }
 
 .input-msg-btn:focus{
@@ -71,8 +72,19 @@ html{
 .msg-received{
     background-color: #24d1f9;
     padding: 20px;
+    border-left: 15px solid;
     border-radius: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     color: #efefef;
+    max-width: 40%;
+    margin:  1% 2%;
+    clear: both;
+    float: left;
+}
+
+.msg-received p{
+    margin: 0;
 }
 
 /* Messages sent */
@@ -81,6 +93,14 @@ html{
     padding: 20px;
     border-radius: 30px;
     color: #000000;
+    max-width: 40%;
+    margin:  1% 2%;
+    float: right;
+    clear: both;
+}
+
+.msg-sent p{
+    margin: 0;
 }
 
 /* Round Checkbox */
