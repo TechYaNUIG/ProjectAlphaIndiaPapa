@@ -40,13 +40,34 @@
 }
 
 #message-page-wrapper{
-    width:100%;
+    padding: 20px 0;
+    max-width: 100%;
     height: 100%;
-    top:0;
-    left:410px;
     position: fixed;
     background: #fff;
 }
+
+.message-title{
+    height: 5%;
+    text-align: center
+}
+
+.message-section{
+    background: #fff;
+    height: 85%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.message-sender-section{
+    padding: 20px 0;
+}
+
+.message-sender-input{
+    margin: 0 auto;
+    width: 80%;
+}
+
 
 .sidebar-nav{
     position: fixed;
