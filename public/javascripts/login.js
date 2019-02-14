@@ -16,9 +16,9 @@ $('#form').submit(function(e) {
 				}
 				else{
 					$.ajax({
-						url: '/users/loginMe',
+						url: '/users/login',
 						type: 'POST',
-						data: {user_name: uName, password: password, loggedin: 1 },
+						data: {name: uName, password: password, loggedin: 1 },
 						success: function(token){
 								swal({
   									position: 'top-end',
