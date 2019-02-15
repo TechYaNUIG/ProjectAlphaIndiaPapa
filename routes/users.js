@@ -9,6 +9,10 @@ router.get('/login', function (req, res, next) {
   res.render('login');
 });
 
+router.get('/current-user',function(req,res,next){
+  res.json({'name':req.user.name});
+});
+
 //Register Handle
 router.post('/register', (req, res) => {
   const { name, password } = req.body;
@@ -30,7 +34,7 @@ router.post('/register', (req, res) => {
           name,
           password
         });
-
+        
         //hash password
         bcrypt.genSalt(10, (err, salt) =>
           bcrypt.hash(newUser.password, salt, (err, hash) => {
