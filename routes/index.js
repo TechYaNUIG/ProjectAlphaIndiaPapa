@@ -51,7 +51,6 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
                 msg.style = 'msg-received';
             }
         });
-        console.log(messages);
         res.json(messages);
     }); 
 });

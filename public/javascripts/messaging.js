@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    getMessages();
+
     $('#send-message').click(function(event){
         var messageText = $('#message-text').val();
         $.ajax({
@@ -12,8 +15,6 @@ $(document).ready(function(){
         });
     });
 
-    getMessages();
-
     function getMessages(){
         $.ajax({
             type: "GET",
@@ -24,6 +25,6 @@ $(document).ready(function(){
                 $('#messages').html(templateData);
             }
         });
-        setTimeout(5000);
+        setTimeout(getMessages,5000);
     }
 });
