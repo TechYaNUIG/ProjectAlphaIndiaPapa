@@ -12,47 +12,17 @@
         </div>
         <div id="inner-sidebar-wrapper" class="col-md-3 col-lg-3">
             <div id="add-task" class="col-md-12">
-                <textarea class="form-control txt-area-custom" placeholder="Add a new task"></textarea>
+                <textarea class="form-control txt-area-custom" placeholder="Add a new task" id="taskInput"></textarea>
                 <ul class="col-md-12 people-list">
                     <!--TODO placeholder values for the moment-->
                     <li><a style="color:rgb(41, 164, 212)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li><a style="color:rgb(252, 255, 101)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li><a style="color:rgb(238, 54, 54)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li><a style="color:rgb(142, 0, 207)"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                    <li class="float-right"><button class="btn btn-success btn-sm btn-rnd">Create</button></li>
+                    <li class="float-right"><button class="btn btn-success btn-sm btn-rnd" id="postBtn">Create</button></li>
                 </ul>
             </div>
             <div id="tasks" class="col-md-12 float-left">
-                <ul class="tasks-list">
-                    <li>
-                        <label class="check-container">
-                            <h4>Task A</h4>
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="check-container">
-                            <h4>Task B</h4>
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="check-container">
-                            <h4>Task C</h4>
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="check-container">
-                            <h4>Task D</h4>
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </li>
-                </ul>
             </div>
 
         </div>
@@ -91,3 +61,5 @@
         </div>
     </div>
 </div>
+
+<script src="/javascripts/tasks.js"></script>

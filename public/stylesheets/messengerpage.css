@@ -13,10 +13,22 @@
 
 #left-sidebar-wrapper ul li a:hover{
     color: #a09e9e;
-}
+} 
 
 #tasks{
     margin-top: 40px;
+}
+
+.list-item{
+    background: #fff;
+    padding: 20px 0 10px 0;
+    vertical-align: middle;
+    margin: 20px 0;
+    border-left: 15px solid;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-color: #efefef;
 }
 
 #inner-sidebar-wrapper{

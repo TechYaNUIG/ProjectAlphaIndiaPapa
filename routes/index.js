@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 const { ensureAuthenticated } = require('../config/auth');
 var Message = require('../models/Message');
+var Task = require('../models/tasks');
 
 /* GET home page. */
 router.get('/', ensureAuthenticated, (req, res) => {
@@ -53,6 +54,49 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
         console.log(messages);
         res.json(messages);
     }); 
+});
+
+router.post('/addTask',function(req, res, next){
+    task = new Task(req.body);
+    task.save(function(err, savedTask){
+        if (err) 
+            throw err;
+        
+        res.json({
+            "id": savedTask._id
+        });
+    });
+});
+
+router.get('/getTasks', function(req, res, next){
+    Task.find({}, function (err, tasks) {
+        if (err)
+            res.send(err);
+
+        res.json(tasks);
+    }).sort({date_created:-1});
+});
+
+router.delete('/removeTask/:id', function(req, res, next){
+    var id = req.params.id;
+
+    Task.remove({_id:id}, function (err, task) {
+        if (err)
+            res.send(err);
+
+        res.json(task);
+    });
+});
+
+router.patch('/completeTask/:id', function(req, res, next){
+    var id = req.params.id;
+    
+    Task.findByIdAndUpdate({_id:id},{"$set":{"commpleted":true}}, function(err, response){
+        if (err)
+            res.send(err);
+        
+        res.json(response);
+    });
 });
 
 module.exports = router;
