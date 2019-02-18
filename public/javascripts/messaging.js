@@ -24,6 +24,6 @@ $(document).ready(function(){
                 $('#messages').html(templateData);
             }
         });
-        setTimeout(5000);
+        setTimeout(getMessages, 5000);
     }
 });
