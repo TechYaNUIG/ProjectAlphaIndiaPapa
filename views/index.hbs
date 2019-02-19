@@ -26,7 +26,7 @@
             </div>
 
         </div>
-        <div class="col">
+                <div class="col">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">Chat</h1>
@@ -35,9 +35,10 @@
             <div class="row">
                 <div id="messages" class="col-md-12 message-section">
                     {{#each message}}
-                    <div class="{{style}}">
+                    <div class="{{style}}" style="border-color:{{colour}};">
                         <p>{{text}}</p>
                     </div>
+<span class="name">{{user_name}}</span><br>
                     {{/each}}
                 </div>
                 
@@ -62,4 +63,4 @@
     </div>
 </div>
 
-<script src="/javascripts/tasks.js"></script>
+<script src="/javascripts/tasks.js"></script>       
