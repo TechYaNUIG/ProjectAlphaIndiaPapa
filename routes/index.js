@@ -14,6 +14,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
             if(msg.user_name === currUser)
             {
                 msg.style = 'msg-sent';
+                msg.user_name = 'You';
             }
             else{
                 msg.style = 'msg-received';
@@ -47,6 +48,7 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
             if(msg.user_name === currUser)
             {
                 msg.style = 'msg-sent';
+                msg.user_name = 'You';
             }
             else{
                 msg.style = 'msg-received';

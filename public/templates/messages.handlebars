@@ -1,5 +1,6 @@
-{{#each messages}}
-<div class="{{style}}">
+{{#each message}}
+<div class="{{style}}" style="border-color:{{colour}};">
     <p>{{text}}</p>
 </div>
+<span class="name">{{user_name}}</span><br>
 {{/each}}

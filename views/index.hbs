@@ -19,14 +19,15 @@
                     <li><a style="color:rgb(252, 255, 101)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li><a style="color:rgb(238, 54, 54)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li><a style="color:rgb(121, 99, 131)"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                    <li class="float-right"><button class="btn btn-success btn-sm btn-rnd" id="postBtn">Create</button></li>
+                    <li class="float-right"><button class="btn btn-success btn-sm btn-rnd" id="postBtn">Create</button>
+                    </li>
                 </ul>
             </div>
             <div id="tasks" class="col-md-12 float-left tasks-section">
             </div>
 
         </div>
-                <div class="col">
+        <div class="col">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">Chat</h1>
@@ -38,17 +39,17 @@
                     <div class="{{style}}" style="border-color:{{colour}};">
                         <p>{{text}}</p>
                     </div>
-<span class="name">{{user_name}}</span><br>
+                    <span class="name">{{user_name}}</span><br>
                     {{/each}}
                 </div>
-                
+
             </div>
             <div class="message-sender-section">
 
                 <div class="input-group mb-3">
 
-                    <input id="message-text" type="text" class="form-control input-msg-txt" placeholder="Type a message..." aria-label="Type a message..."
-                        aria-describedby="basic-addon2">
+                    <input id="message-text" type="text" class="form-control input-msg-txt"
+                        placeholder="Type a message..." aria-label="Type a message..." aria-describedby="basic-addon2">
 
                     <div class="input-group-append">
 
@@ -63,4 +64,4 @@
     </div>
 </div>
 
-<script src="/javascripts/tasks.js"></script>       
+<script src="/javascripts/tasks.js"></script>
