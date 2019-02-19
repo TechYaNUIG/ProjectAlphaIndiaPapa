@@ -67,6 +67,16 @@ html{
     box-shadow: none;
     background-color: #efefef;
 }
+.name{
+    color: #8d8d8d;
+    float: left;
+    padding-top: 0px;
+    padding-bottom: 15px;
+    padding-left: 3px;
+    clear: both;
+	margin:  0% 2%;
+
+}
 
 /* Messages received */
 .msg-received{
@@ -76,13 +86,12 @@ html{
     border-radius: 30px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    color: #efefef;
+    color: #efefef; 
     max-width: 40%;
     margin:  1% 2%;
     clear: both;
     float: left;
 }
-
 .msg-received p{
     margin: 0;
 }

@@ -6,7 +6,7 @@
                 <li class="nav-item"><a href="#"><i class="fas fa-tasks fa-3x"></i></a></li>
             </ul>
             <div class="text-center mt-auto">
-                <button id="sign-out-button" type="button" class="btn btn-danger  btn-rnd">Sign out</button>
+                <button id="sign-out-button" type="button" class="btn btn-danger btn-sm btn-rnd">Sign out</button>
             </div>
 
         </div>
@@ -18,7 +18,7 @@
                     <li><a style="color:rgb(41, 164, 212)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li><a style="color:rgb(252, 255, 101)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li><a style="color:rgb(238, 54, 54)"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                    <li><a style="color:rgb(142, 0, 207)"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                    <li><a style="color:rgb(121, 99, 131)"><i class="fas fa-user-circle fa-2x"></i></a></li>
                     <li class="float-right"><button class="btn btn-success btn-sm btn-rnd" id="postBtn">Create</button></li>
                 </ul>
             </div>
@@ -26,7 +26,7 @@
             </div>
 
         </div>
-        <div class="col">
+                <div class="col">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">Chat</h1>
@@ -35,9 +35,10 @@
             <div class="row">
                 <div id="messages" class="col-md-12 message-section">
                     {{#each message}}
-                    <div class="{{style}}">
+                    <div class="{{style}}" style="border-color:{{colour}};">
                         <p>{{text}}</p>
                     </div>
+<span class="name">{{user_name}}</span><br>
                     {{/each}}
                 </div>
                 
@@ -62,4 +63,4 @@
     </div>
 </div>
 
-<script src="/javascripts/tasks.js"></script>
+<script src="/javascripts/tasks.js"></script>       

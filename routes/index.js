@@ -28,6 +28,7 @@ router.post('/add-message', ensureAuthenticated, (req, res, next) => {
     var data = req.body;
     message.user_name = req.user.name;
     message.text = data.text;
+    message.colour = req.user.colour;
     message.save((err, savedMessage) => {
         if (err) {
             throw err;
