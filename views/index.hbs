@@ -36,10 +36,12 @@
             <div class="row">
                 <div id="messages" class="col-md-12 message-section">
                     {{#each message}}
-                    <div class="{{style}}" style="border-color:{{colour}};">
-                        <p>{{text}}</p>
+                    <div class="{{style}}">
+                        <div style="border-color:{{colour}};">
+                            <p>{{text}}</p>
+                        </div>
+                        <span>{{user_name}}</span><br>
                     </div>
-                    <span class="name">{{user_name}}</span><br>
                     {{/each}}
                 </div>
 
