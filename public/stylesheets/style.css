@@ -85,6 +85,7 @@ html{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     color: #efefef; 
+    width: 100%;
     max-width: 100%;
     margin:  1% 2%;
     
@@ -117,6 +118,7 @@ html{
     padding: 20px;
     border-radius: 30px;
     color: #000000;
+    width: 100%;
     max-width: 100%;
     margin:  1% 2%;
 
