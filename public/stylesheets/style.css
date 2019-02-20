@@ -70,39 +70,74 @@ html{
 
 /* Messages received */
 .msg-received{
+    margin: 1% 2%;
+    float: left;
+    max-width: 40%;
+    width: auto;
+    clear: both;
+}
+
+.msg-received div{
     background-color: #24d1f9;
     padding: 20px;
     border-left: 15px solid;
     border-radius: 30px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    color: #efefef;
-    max-width: 40%;
+    color: #efefef; 
+    width: 100%;
+    max-width: 100%;
     margin:  1% 2%;
-    clear: both;
-    float: left;
+    
 }
-
 .msg-received p{
     margin: 0;
 }
 
+.msg-received span{
+    color: #8d8d8d;
+    float: left;
+    padding-top: 0px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    clear: both;
+    margin:  0% 2%;
+    font-weight: bold;
+}
+
 /* Messages sent */
 .msg-sent{
+    margin: 1% 2%;
+    float: right;
+    max-width: 40%;
+    clear: both;
+}
+
+.msg-sent div{
     background-color: #efefef;
     padding: 20px;
     border-radius: 30px;
     color: #000000;
-    max-width: 40%;
+    width: 100%;
+    max-width: 100%;
     margin:  1% 2%;
-    float: right;
-    clear: both;
+
 }
 
 .msg-sent p{
     margin: 0;
 }
 
+.msg-sent span{
+    color: #8d8d8d;
+    float: right;
+    padding-top: 0px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    clear: both;
+    margin:  0% 2%;
+    font-weight: bold;
+}
 /* Round Checkbox */
 
 .check-container {

@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    getMessages();
+
     $('#send-message').click(function(event){
         var messageText = $('#message-text').val();
         $.ajax({
@@ -12,8 +15,6 @@ $(document).ready(function(){
         });
     });
 
-    getMessages();
-
     function getMessages(){
         $.ajax({
             type: "GET",
@@ -21,6 +22,7 @@ $(document).ready(function(){
             success:function(data){
                 var template = Handlebars.templates['messages'];
                 var templateData = template({messages:data});
+                console.log(templateData);
                 $('#messages').html(templateData);
             }
         });

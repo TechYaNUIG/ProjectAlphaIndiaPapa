@@ -16,7 +16,12 @@ var MessageSchema = new mongoose.Schema({
     style:{
         type:String,
         default:null
+    },
+    colour:{
+        type:String,
+        default:null
     }
+
 });
 
 var Message = mongoose.model('Message',MessageSchema);

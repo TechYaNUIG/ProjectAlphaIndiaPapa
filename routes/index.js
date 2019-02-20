@@ -14,6 +14,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
             if(msg.user_name === currUser)
             {
                 msg.style = 'msg-sent';
+                msg.user_name = 'You';
             }
             else{
                 msg.style = 'msg-received';
@@ -28,6 +29,7 @@ router.post('/add-message', ensureAuthenticated, (req, res, next) => {
     var data = req.body;
     message.user_name = req.user.name;
     message.text = data.text;
+    message.colour = req.user.colour;
     message.save((err, savedMessage) => {
         if (err) {
             throw err;
@@ -46,12 +48,12 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
             if(msg.user_name === currUser)
             {
                 msg.style = 'msg-sent';
+                msg.user_name = 'You';
             }
             else{
                 msg.style = 'msg-received';
             }
         });
-        console.log(messages);
         res.json(messages);
     }); 
 });

@@ -9,6 +9,10 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    colour:{
+        type: String,
+        required: false
+    },
     date:{
         type: Date,
         default: Date.now
