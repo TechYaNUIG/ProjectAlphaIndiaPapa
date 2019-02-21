@@ -32,10 +32,11 @@ $(document).ready(
 										position: 'top-end',
 										type: 'success',
 										title: 'Account Created!',
-										text: 'You can now log in!
+										text: 'You can now log in!',
 										showConfirmButton: false,
 										timer: 1500
 									})
+									var x = setTimeout(function(){ $(location).attr('href', '/' )},1500);
 								},
 								error: function (errMsg) {
 									swal(
