@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-    getMessages();
+    userHasScrolled = false;
+
+    getMessages();    
 
     $('#send-message').click(function(event){
         var messageText = $('#message-text').val();
@@ -27,5 +29,16 @@ $(document).ready(function(){
             }
         });
         setTimeout(getMessages, 5000);
+        scrollToBottom();
     }
+
+    function scrollToBottom(){
+        if(!userHasScrolled){
+            $('.message-section').scrollTop($('.message-section')[0].scrollHeight);
+        }
+    }
+
+     $('.message-section').scroll(function(){
+        userHasScrolled = true;
+     });
 });
