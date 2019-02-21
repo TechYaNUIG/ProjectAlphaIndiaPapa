@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var tasksSchema = new Schema({
     user_name: {
-        type: String
+        type: String,
+	default: "Unassigned"
     },
     task: {
         type: String
