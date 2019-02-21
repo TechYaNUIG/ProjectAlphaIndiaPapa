@@ -92,8 +92,15 @@ router.delete('/removeTask/:id', function(req, res, next){
 
 router.patch('/completeTask/:id', function(req, res, next){
     var id = req.params.id;
-    
-    Task.findByIdAndUpdate({_id:id},{"$set":{"commpleted":true}}, function(err, response){
+
+    var taskId = Task.findOne({id:id});
+    if(taskId.commpleted){
+        taskId.commpleted = false;
+    } else{
+        taskId.commpleted = true;
+    }
+
+    Task.findByIdAndUpdate({_id:id},{$set:{"commpleted": taskId.commpleted}}, function(err, response){
         if (err)
             res.send(err);
         
