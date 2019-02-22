@@ -76,7 +76,12 @@ html{
     width: auto;
     clear: both;
 }
-
+.task-update{
+    margin: 1% 2%;
+    float: right;
+    max-width: 40%;
+    clear: both;
+}
 .msg-received div{
     background-color: #24d1f9;
     padding: 20px;
