@@ -40,6 +40,20 @@ router.post('/add-message', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
+router.post('/add-task-message', ensureAuthenticated, (req, res, next) => {
+    message = new Message();
+    message.user_name = req.user.name;
+    message.text = req.body;
+    message.save((err, savedMessage) => {
+        if (err) {
+            throw err;
+        }
+        res.json({
+            "id": savedMessage._id,
+            "message": savedMessage.message
+        });
+    });
+});
 
 router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
     var currUser = req.user.name;
@@ -60,10 +74,10 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
 
 router.post('/addTask',function(req, res, next){
     task = new Task(req.body);
+    task.user_name = req.user.name;
     task.save(function(err, savedTask){
         if (err) 
             throw err;
-        
         res.json({
             "id": savedTask._id
         });
@@ -93,13 +107,12 @@ router.delete('/removeTask/:id', function(req, res, next){
 router.patch('/completeTask/:id', function(req, res, next){
     var id = req.params.id;
 
-    Task.findOne({_id:id},function(err,task){
-        task.commpleted =!task.commpleted;
-        task.save(function(err,updatedTask){
-            if(err)
-            throw err;
-        });
-    })
+    Task.findByIdAndUpdate({_id:id},{"$set":{"commpleted": true}}, function(err, response){
+        if (err)
+            res.send(err);
+        
+        res.json(response);
+    });
 });
 
 module.exports = router;
