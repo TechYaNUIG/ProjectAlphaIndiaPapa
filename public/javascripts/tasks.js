@@ -1,8 +1,18 @@
 $(document).ready(function(){
-    
     getTasks();
-    
-    
+function addtaskmessage() {
+        $.ajax({
+            type:'POST',
+            url:'/add-message',
+            data:{style:"task-update",text:"New task created: "+$('#taskInput').val()},
+            success:function(data){
+                $('#message-text').val("");
+                getMessages();
+            }
+        });
+console.log(task);
+}
+
     function getTasks() {
         $.ajax({
             url: '/getTasks/',
@@ -23,7 +33,7 @@ $(document).ready(function(){
        setTimeout(getTasks, 10000);
     }
     
-    $("#postBtn").click(function (event) {            
+    $("#postBtn").click(function (event) { 
         $.ajax({
             url: '/addTask/',
             type: 'POST',
@@ -33,6 +43,7 @@ $(document).ready(function(){
                 $("#taskInput").val("")
             }
         });
+addtaskmessage();
     });
 
     $("#tasks").on('click', '#check-complete', function(){
