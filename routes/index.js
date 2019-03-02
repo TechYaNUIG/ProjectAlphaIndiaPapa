@@ -63,9 +63,12 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
             {
                 msg.style = 'msg-sent';
                 msg.user_name = 'You';
-            }
-            else{
+            }else{
                 msg.style = 'msg-received';
+            }
+            
+            if(msg.text.includes("New task created:")){
+                msg.style = 'msg-task-created';
             }
         });
         res.json(messages);
@@ -90,7 +93,7 @@ router.get('/getTasks', function(req, res, next){
             res.send(err);
 
         res.json(tasks);
-    }).sort({date_created:-1});
+    }).sort({commpleted: 1}).sort({date_created:-1});
 });
 
 router.delete('/removeTask/:id', function(req, res, next){

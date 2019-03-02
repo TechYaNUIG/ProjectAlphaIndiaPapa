@@ -143,6 +143,40 @@ html{
     margin:  0% 2%;
     font-weight: bold;
 }
+
+/* Task Added to Message */
+
+.msg-task-created{
+    margin: 40px auto;
+    max-width: 40%;
+    clear: both;
+}
+
+.msg-task-created div{
+    background-color: #efefef;
+    padding: 40px;
+    border-radius: 10px;
+    color: #000000;
+    width: 100%;
+    max-width: 100%;
+    margin:  1% 2%;
+}
+
+.msg-task-created p{
+    margin: 0;
+    text-align: center;
+}
+
+.msg-task-created span{
+    color: #8d8d8d;
+    padding-top: 0px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    clear: both;
+    margin:  0% 2%;
+    font-weight: bold;
+}
+
 /* Round Checkbox */
 
 .check-container {
