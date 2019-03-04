@@ -13,6 +13,10 @@ var tasksSchema = new Schema({
         type: Date,
         default: new Date()
     },
+    date_due: {
+        type: Date,
+        default: null
+    },
     commpleted: {
         type: Boolean,
         default:false

@@ -4,10 +4,10 @@ $(document).ready(function () {
 
     function addTaskMessage() {
         $.ajax({
-            type:'POST',
-            url:'/add-message',
-            data:{style:"task-update",text:"New task created: "+$('#taskInput').val()},
-            success:function(data){
+            type: 'POST',
+            url: '/add-message',
+            data: { style: "task-update", text: "New task created: " + $('#taskInput').val() },
+            success: function (data) {
                 $('#message-text').val("");
             }
         });
@@ -19,7 +19,7 @@ $(document).ready(function () {
             type: 'GET',
             success: function (data) {
                 var template = Handlebars.templates['tasks'];
-                var templateData = template({task:data});
+                var templateData = template({ task: data });
                 console.log(templateData);
                 $('#tasks').html(templateData);
             }
@@ -31,11 +31,12 @@ $(document).ready(function () {
         $.ajax({
             url: '/addTask/',
             type: 'POST',
-            data: { task: $('#taskInput').val() },
+            data: { task: $('#taskInput').val(), date_due: $('#taskDeadline').val() },
             success: function (data) {
                 getTasks();
                 addTaskMessage();
                 $("#taskInput").val("")
+                due_date: $('#taskDeadline').val("")
             }
         });
     });

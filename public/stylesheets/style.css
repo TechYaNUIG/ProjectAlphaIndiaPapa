@@ -18,6 +18,15 @@ html{
 .btn-rnd{
     border-radius: 20px;
 }
+.txt-area-custom-date{
+    border-radius: 20px;
+    border-width: 0;
+    background-color: #efefef;
+    width: 100%;
+    resize: none;
+    padding: 20px;
+    margin-top: 10px;
+}
 
 /* Text area*/
 .txt-area-custom{

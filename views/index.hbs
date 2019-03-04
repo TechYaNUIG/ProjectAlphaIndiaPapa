@@ -13,6 +13,7 @@
         <div id="inner-sidebar-wrapper" class="col-md-3 col-lg-3">
             <div id="add-task" class="col-md-12">
                 <textarea class="form-control txt-area-custom" placeholder="Add a new task" id="taskInput"></textarea>
+		<input onfocus="(this.type='date')" class="form-control txt-area-custom-date" placeholder="Add task deadline" id="taskDeadline">
                 <ul class="col-md-12 people-list">
                     <!--TODO placeholder values for the moment-->
                     <li><a style="color:rgb(41, 164, 212)"><i class="fas fa-user-circle fa-2x"></i></a></li>
@@ -30,7 +31,13 @@
                         <label class="check-container">
                             <h4>
                                 {{task}}
-                                <div class="task-user-name">Created by: {{user_name}}</div>
+                                <div class="task-user-name">
+                                    Created by: {{user_name}}
+                                    <br><br>
+                                    {{#if date_due}}
+                                        Due by: {{date_due}}
+                                    {{/if}}
+                                </div>
                             </h4>
                             <input type="checkbox" id="check-complete" name="{{_id}}"
                                 {{#if commpleted}}
