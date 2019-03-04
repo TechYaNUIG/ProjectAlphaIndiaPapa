@@ -6,7 +6,7 @@
                 <li class="nav-item"><a href="#"><i class="fas fa-tasks fa-3x"></i></a></li>
             </ul>
             <div class="text-center mt-auto">
-                <button id="sign-out-button" type="button" class="btn btn-danger  btn-rnd">Sign out</button>
+                <button id="sign-out-button" type="button" class="btn btn-danger btn-rnd">Sign out</button>
             </div>
 
         </div>
@@ -24,6 +24,24 @@
                 </ul>
             </div>
             <div id="tasks" class="col-md-12 float-left tasks-section">
+                <ul class="tasks-list">
+                    {{#each task}}
+                    <li class="list-item">
+                        <label class="check-container">
+                            <h4>
+                                {{task}}
+                                <div class="task-user-name">Created by: {{user_name}}</div>
+                            </h4>
+                            <input type="checkbox" id="check-complete" name="{{_id}}"
+                                {{#if commpleted}}
+                                checked
+                                {{/if}}
+                            >
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    {{/each}}
+                </ul>
             </div>
 
         </div>
@@ -46,18 +64,18 @@
                 </div>
 
             </div>
-           <div class="message-sender-section">
-		<form>
-    			<div class="input-group mb-3">
-				<input id="message-text" type="text" class="form-control input-msg-txt"
-					placeholder="Type a message..." aria-label="Type a message..." aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<input id="send-message" type="submit" value="Send" class="btn input-msg-btn"/>
-				</div>
-    			</div>
-		</form>
-		</div>       
-	</div>
+            <div class="message-sender-section">
+                <form>
+                    <div class="input-group mb-3">
+                        <input id="message-text" type="text" class="form-control input-msg-txt" placeholder="Type a message..."
+                            aria-label="Type a message..." aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <input id="send-message" type="submit" value="Send" class="btn input-msg-btn" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
