@@ -33,15 +33,18 @@ $(document).ready(function () {
 			var dd = today.getDate();
 			var mm = today.getMonth()+1;
 			var yyyy = today.getFullYear();
-			due2 = "due in: ";
+			due2 = "Due in: ";
 			if(yyyy!=year){
 				if(yyyy>year){due2 = "";due3 ="Overdue by: "+((year-yyyy)*(-1))+ " years";}
+				else if((year-yyyy)==1){due3 ="1 year";} 
 				else{due3 =(year-yyyy)+ " years";} }
 			else if(mm!=month){
 				if(mm>month){due2 = "";due3 ="Overdue by: "+((month-mm)*(-1))+ " months";}
+				else if((month-mm)==1){due3 ="1 month";} 
 				else{due3 =(month-mm)+ " months";} }
 			else if(dd!=day){
 				if(dd>day){due2 = "";due3 ="Overdue by: "+((day-dd)*(-1))+ " days";}
+				else if((day-dd)==1){due3 ="1 day";} 
 				else{due3 =(day-dd)+ " days";} }
 			else{due3 = "Due today"; due2="";}
 		}
