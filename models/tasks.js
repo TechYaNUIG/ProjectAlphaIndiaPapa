@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var tasksSchema = new Schema({
     user_name: {
         type: String,
-	    default: "Unassigned"
+	default: "Unassigned"
     },
     task: {
         type: String
@@ -22,5 +22,4 @@ var tasksSchema = new Schema({
         default:false
     }
 });
-
 module.exports = mongoose.model('Task', tasksSchema);

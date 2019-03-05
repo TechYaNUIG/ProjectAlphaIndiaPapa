@@ -18,6 +18,12 @@
 #tasks{
     margin-top: 40px;
 }
+.task-due-in{
+    color:#747474;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
 .task-user-name{
     color:#747474;
     font-size: 15px;
