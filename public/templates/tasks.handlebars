@@ -1,0 +1,18 @@
+{{#each task}}
+<li class="list-item">
+    <label class="check-container">
+        <h4>
+            {{task}}
+            <div class="task-user-name">
+                Created by: {{user_name}}
+                <br><br>
+                {{#if date_due}}
+                Due by: {{date_due}}
+                {{/if}}
+            </div>
+        </h4>
+        <input type="checkbox" id="check-complete" name="{{_id}}" {{#if commpleted}} checked {{/if}}>
+        <span class="checkmark"></span>
+    </label>
+</li>
+{{/each}}
