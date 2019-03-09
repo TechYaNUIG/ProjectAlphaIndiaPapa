@@ -112,6 +112,7 @@ router.patch('/completeTask/:id', function(req, res, next){
 
     Task.findOne({_id:id},function(err,task){
         task.commpleted =!task.commpleted;
+	task.completed_user_name =req.user.name;
         task.save(function(err,updatedTask){
             if(err)
             throw err;

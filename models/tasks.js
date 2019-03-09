@@ -17,6 +17,10 @@ var tasksSchema = new Schema({
         type: Date,
         default: null
     },
+    completed_user_name: {
+        type: String,
+	default: "Unassigned"
+    },
     commpleted: {
         type: Boolean,
         default:false
