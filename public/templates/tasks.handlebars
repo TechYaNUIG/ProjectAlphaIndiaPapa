@@ -32,7 +32,7 @@
 					due = "Due by: "+day+"-"+month+"-"+year;
 					document.getElementById("{{{_id}}}").innerHTML = due + "<div class=\"task-due-in\">"+due2+ "<span style=\"color:#fc5b57\">"+due3+ "</span></div>";
 				</script>
-				{{#if commpleted}}<br>
+				{{#if completed}}<br>
 				Completed by: {{completed_user_name}}
 				{{else}}
 					{{#if date_due}}
@@ -41,7 +41,7 @@
 					{{/if}}				
 				{{/if}}            </div>
         </h4>
-        <input type="checkbox" id="check-complete" name="{{_id}}" {{#if commpleted}} checked {{/if}}>
+        <input type="checkbox" id="check-complete" name="{{_id}}" {{#if completed}} checked {{/if}}>
         <span class="checkmark"></span>
     </label>
 </div>
