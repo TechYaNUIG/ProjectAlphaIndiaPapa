@@ -212,7 +212,7 @@ html{
 .checkmark {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 5px;
     height: 25px;
     width: 25px;
     border-radius: 50%;
