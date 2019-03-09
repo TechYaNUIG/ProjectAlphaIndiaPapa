@@ -21,7 +21,7 @@ var tasksSchema = new Schema({
         type: String,
 	default: "Unassigned"
     },
-    commpleted: {
+    completed: {
         type: Boolean,
         default:false
     }

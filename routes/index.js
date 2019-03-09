@@ -100,7 +100,7 @@ router.get('/getTasks', function(req, res, next){
             res.send(err);
 
         res.json(tasks);
-    }).sort({commpleted: 1}).sort({date_created:-1});
+    }).sort({completed: 1}).sort({date_created:-1});
 });
 
 router.delete('/removeTask/:id', function(req, res, next){
@@ -118,7 +118,7 @@ router.patch('/completeTask/:id', function(req, res, next){
     var id = req.params.id;
 
     Task.findOne({_id:id},function(err,task){
-        task.commpleted =!task.commpleted;
+        task.completed =!task.completed;
 	task.completed_user_name =req.user.name;
         task.save(function(err,updatedTask){
             if(err)
