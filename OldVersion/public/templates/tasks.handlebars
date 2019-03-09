@@ -1,0 +1,49 @@
+{{#each task}}
+<div class="list-item">
+    <label class="check-container">
+        <h4>
+            {{task}}
+            <div class="task-user-name">	
+                Created by: {{user_name}}
+                <br>
+				<script type = "text/javascript">
+					var due = document.getElementById("{{_id}}2").innerHTML 
+					var year = due.substring(0,4);
+					var month = due.substring(5,7);
+					var day= due.substring(8,10);
+					var today = new Date();
+					var dd = today.getDate();
+					var mm = today.getMonth()+1;
+					var yyyy = today.getFullYear();
+					due2 = "Due in: ";
+					if(yyyy!=year){
+						if(yyyy>year){due2 = "";due3 ="Overdue by: "+((year-yyyy)*(-1))+ " years";}
+						else if((year-yyyy)==1){due3 ="1 year";} 
+						else{due3 =(year-yyyy)+ " years";} }
+					else if(mm!=month){
+						if(mm>month){due2 = "";due3 ="Overdue by: "+((month-mm)*(-1))+ " months";}
+						else if((month-mm)==1){due3 ="1 month";} 
+						else{due3 =(month-mm)+ " months";} }
+					else if(dd!=day){
+						if(dd>day){due2 = "";due3 ="Overdue by: "+((day-dd)*(-1))+ " days";}
+						else if((day-dd)==1){due3 ="1 day";} 
+						else{due3 =(day-dd)+ " days";} }
+					else{due3 = "Due today"; due2="";}
+					due = "Due by: "+day+"-"+month+"-"+year;
+					document.getElementById("{{{_id}}}").innerHTML = due + "<div class=\"task-due-in\">"+due2+ "<span style=\"color:#fc5b57\">"+due3+ "</span></div>";
+				</script>
+				{{#if commpleted}}<br>
+				Compleated by: {{compleated_user_name}}
+				{{else}}
+					{{#if date_due}}
+					<span id="{{_id}}">'Due by' data not loaded</span>
+					<span class="blank" id="{{_id}}2">{{{date_due}}}</span>
+					{{/if}}				
+				{{/if}}
+            </div>
+        </h4>
+        <input type="checkbox" id="check-complete" name="{{_id}}" {{#if commpleted}} checked {{/if}}>
+        <span class="checkmark"></span>
+    </label>
+</div>
+{{/each}}
