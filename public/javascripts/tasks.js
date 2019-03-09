@@ -20,7 +20,6 @@ $(document).ready(function () {
             success: function (data) {
                 var template = Handlebars.templates['tasks'];
                 var templateData = template({ task: data });
-                console.log(templateData);
                 $('#tasks').html(templateData);
             }
         });

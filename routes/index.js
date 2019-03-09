@@ -75,6 +75,13 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
     }); 
 });
 
+router.get('/get-user', ensureAuthenticated, (req,res,next)=>{
+    var currUser = req.user.name;
+    res.json({
+        "user_name":currUser
+    });
+});
+
 router.post('/addTask',function(req, res, next){
     task = new Task(req.body);
     task.user_name = req.user.name;

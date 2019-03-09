@@ -24,7 +24,6 @@ $(document).ready(function(){
             success:function(data){
                 var template = Handlebars.templates['messages'];
                 var templateData = template({messages:data});
-                console.log(templateData);
                 $('#messages').html(templateData);
             }
         });

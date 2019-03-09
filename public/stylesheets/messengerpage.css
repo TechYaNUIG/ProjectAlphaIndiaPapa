@@ -75,7 +75,7 @@
 
 .tasks-section{
     position: absolute;
-    height: 80%;
+    height: 75%;
     overflow-y: scroll;
 }
 
@@ -108,6 +108,13 @@
     bottom:0;
 }
 
+a{
+    color: #505050;
+}
+
+a:hover{
+    color: #a09e9e;
+}
 
 body, html{
     height: 100%;

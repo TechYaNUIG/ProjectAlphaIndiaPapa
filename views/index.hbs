@@ -2,8 +2,8 @@
     <div class="row h-100">
         <div id="left-sidebar-wrapper" class="col-md-1 col-lg-1 d-flex flex-column">
             <ul class="nav flex-column align-items-center">
-                <li class="nav-item"> <a href="#"></a><i class="fas fa-user-circle fa-4x"></i></a></li>
-                <li class="nav-item"><a href="#"><i class="fas fa-tasks fa-3x"></i></a></li>
+                <li id="user-profile" class="nav-item"><a href="#"><i class="fas fa-user-circle fa-4x"></i></a></li>
+                <li id="tasks-page" class="nav-item"><a href="#"><i class="fas fa-tasks fa-3x"></i></a></li>
             </ul>
             <div class="text-center mt-auto">
                 <button id="sign-out-button" type="button" class="btn btn-danger btn-rnd">Sign out</button>
@@ -11,47 +11,8 @@
 
         </div>
         <div id="inner-sidebar-wrapper" class="col-md-3 col-lg-3">
-            <div id="add-task" class="col-md-12">
-                <textarea class="form-control txt-area-custom" placeholder="Add a new task" id="taskInput"></textarea>
-		<input onfocus="(this.type='date')" class="form-control txt-area-custom-date" placeholder="Add task deadline" id="taskDeadline">
-                <ul class="col-md-12 people-list">
-                    <!--TODO placeholder values for the moment-->
-                    <li><a style="color:rgb(41, 164, 212)"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                    <li><a style="color:rgb(252, 255, 101)"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                    <li><a style="color:rgb(238, 54, 54)"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                    <li><a style="color:rgb(121, 99, 131)"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                    <li class="float-right"><button class="btn btn-success btn-sm btn-rnd" id="postBtn">Create</button>
-                    </li>
-                </ul>
-            </div>
-            <div id="tasks" class="col-md-12 float-left tasks-section">
-                <ul class="tasks-list">
-                    {{#each task}}
-                    <li class="list-item">
-                        <label class="check-container">
-                            <h4>
-                                {{task}}
-                                <div class="task-user-name">
-                                    Created by: {{user_name}}
-                                    <br><br>
-                                    {{#if date_due}}
-                                        Due by: {{date_due}}
-                                    {{/if}}
-                                </div>
-                            </h4>
-                            <input type="checkbox" id="check-complete" name="{{_id}}"
-                                {{#if commpleted}}
-                                checked
-                                {{/if}}
-                            >
-                            <span class="checkmark"></span>
-                        </label>
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
-
         </div>
+
         <div class="col">
             <div class="row">
                 <div class="col-md-12">
@@ -74,8 +35,9 @@
             <div class="message-sender-section">
                 <form>
                     <div class="input-group mb-3">
-                        <input id="message-text" type="text" class="form-control input-msg-txt" placeholder="Type a message..."
-                            aria-label="Type a message..." aria-describedby="basic-addon2">
+                        <input id="message-text" type="text" class="form-control input-msg-txt"
+                            placeholder="Type a message..." aria-label="Type a message..."
+                            aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <input id="send-message" type="submit" value="Send" class="btn input-msg-btn" />
                         </div>
@@ -86,4 +48,3 @@
     </div>
 </div>
 
-<script src="/javascripts/tasks.js"></script>
