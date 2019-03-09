@@ -1,0 +1,17 @@
+<script src="/javascripts/tasks.js"></script>
+<div id="add-task" class="col-md-12">
+    <textarea class="form-control txt-area-custom" placeholder="Add a new task" id="taskInput"></textarea>
+    <input onfocus="(this.type='date')" class="form-control txt-area-custom-date" placeholder="Add task deadline"
+        id="taskDeadline">
+    <ul class="col-md-12 people-list">
+        <!--TODO placeholder values for the moment-->
+        <li><a style="color:rgb(41, 164, 212)"><i class="fas fa-user-circle fa-2x"></i></a></li>
+        <li><a style="color:rgb(252, 255, 101)"><i class="fas fa-user-circle fa-2x"></i></a></li>
+        <li><a style="color:rgb(238, 54, 54)"><i class="fas fa-user-circle fa-2x"></i></a></li>
+        <li><a style="color:rgb(121, 99, 131)"><i class="fas fa-user-circle fa-2x"></i></a></li>
+        <li class="float-right"><button class="btn btn-success btn-sm btn-rnd" id="postBtn">Create</button>
+        </li>
+    </ul>
+</div>
+<div id="tasks" class="col-md-12 float-left tasks-section">
+</div>
