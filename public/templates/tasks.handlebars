@@ -7,7 +7,7 @@
                 Created by: {{user_name}}
                 <br>
 				<script type = "text/javascript">
-					var due = $("#input").html();
+					var due = document.getElementById("{{_id}}2").innerHTML 
 					var year = due.substring(0,4);
 					var month = due.substring(5,7);
 					var day= due.substring(8,10);
@@ -30,10 +30,12 @@
 						else{due3 =(day-dd)+ " days";} }
 					else{due3 = "Due today"; due2="";}
 					due = "Due by: "+day+"-"+month+"-"+year;
-					document.getElementById("output").innerHTML = due + "<div class=\"task-due-in\">"+due2+ "<span style=\"color:#fc5b57\">"+due3+ "</span></div>";
+					document.getElementById("{{{_id}}}").innerHTML = due + "<div class=\"task-due-in\">"+due2+ "<span style=\"color:#fc5b57\">"+due3+ "</span></div>";
 				</script>
-				<span id="output">'Due by' data not loaded</span>
-				<span class="blank" id="input">{{{date_due}}}</span>
+				{{#if date_due}}
+				<span id="{{_id}}">'Due by' data not loaded</span>
+				<span class="blank" id="{{_id}}2">{{{date_due}}}</span>
+				{{/if}}
             </div>
         </h4>
         <input type="checkbox" id="check-complete" name="{{_id}}" {{#if commpleted}} checked {{/if}}>
