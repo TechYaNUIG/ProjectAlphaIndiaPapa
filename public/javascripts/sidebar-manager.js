@@ -10,7 +10,7 @@ $(document).ready(function(){
             url:"/get-user",
             success:function(data){
                 var template = Handlebars.templates['user-page'];
-                var templateData = template({user_name:data.user_name, colour:data.colour});
+                var templateData = template({user_name:data.user_name, colour:data.colour, _id:data._id});
                 $('#inner-sidebar-wrapper').html(templateData);
             }
         });

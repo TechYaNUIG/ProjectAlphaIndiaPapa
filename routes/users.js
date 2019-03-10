@@ -78,4 +78,20 @@ router.get('/logout',(req,res)=>{
   console.log(outuser);
   res.json({'success':'Logged out '+outuser});
 });
+
+//change user colour
+router.patch('/change_colour/:id', function(req, res, next){
+    var id = req.params.id;
+   var c = req.body.colour;
+   User.findOne({_id:id},function(err,user){
+	user.colour = c;
+        user.save(function(err,updatedUser){
+            if(err)
+            throw err;
+        });
+    });
+
+  res.json({'success':'Colour for user changed from '+c});
+});
+
 module.exports = router;
