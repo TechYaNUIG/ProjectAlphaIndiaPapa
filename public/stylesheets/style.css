@@ -18,6 +18,32 @@ html{
 .btn-rnd{
     border-radius: 20px;
 }
+.btn-color:hover{
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-color{
+    margin-bottom:15px;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border: 0px;
+	width: 32px;
+	height: 25px;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	top: -70%;
+	transform: translateY(30%);
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+	margin: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
 .txt-area-custom-date{
     border-radius: 20px;
     border-width: 0;

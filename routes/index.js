@@ -77,8 +77,10 @@ router.get('/get-messages', ensureAuthenticated, (req, res, next) => {
 
 router.get('/get-user', ensureAuthenticated, (req,res,next)=>{
     var currUser = req.user.name;
+    var currColour = req.user.colour;
     res.json({
-        "user_name":currUser
+        "user_name":currUser,
+	"colour": currColour
     });
 });
 
