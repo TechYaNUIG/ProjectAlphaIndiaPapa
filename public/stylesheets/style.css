@@ -30,6 +30,16 @@ html{
     top: 93%;
     transform: translateY(-7%);
 }
+.btn-task-delete{
+    float:right;
+   margin-right: 10px;
+background-color:#747474;
+color:WHITE;
+}
+.btn-task-delete:hover{
+background-color:#515151;
+}
+
 
 #primary_color{
     border-radius: 100%;

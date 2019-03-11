@@ -109,13 +109,13 @@ router.get('/getTasks', function(req, res, next){
 
 router.delete('/removeTask/:id', function(req, res, next){
     var id = req.params.id;
-
-    Task.remove({_id:id}, function (err, task) {
-        if (err)
-            res.send(err);
-
-        res.json(task);
-    });
+    var currUser = req.user.name;  
+             Task.deleteOne({_id:id, user_name:currUser}, function (err, task) {
+                  if (err){
+                     res.send(err);
+	          }
+                   res.json(task);
+             });
 });
 
 router.patch('/completeTask/:id', function(req, res, next){

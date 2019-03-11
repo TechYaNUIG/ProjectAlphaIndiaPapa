@@ -39,9 +39,11 @@
 					<span id="{{_id}}">'Due by' data not loaded</span>
 					<span class="blank" id="{{_id}}2">{{{date_due}}}</span>
 					{{/if}}				
-				{{/if}}            </div>
-        </h4>
+				{{/if}}      		
+				</div>
+        </h4>		
         <input type="checkbox" id="check-complete" name="{{_id}}" {{#if completed}} checked {{/if}}>
+		<button type="button" id="taskbutton" name="{{_id}}" class="btn btn-rnd btn-task-delete">Delete Task</button>
         <span class="checkmark"></span>
     </label>
 </div>

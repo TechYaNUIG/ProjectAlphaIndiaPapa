@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/User');
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
+var Message = require('../models/Message');
 
 /* GET users listing. */
 router.get('/login', function (req, res, next) {
@@ -82,16 +83,29 @@ router.get('/logout',(req,res)=>{
 //change user colour
 router.patch('/change_colour/:id', function(req, res, next){
     var id = req.params.id;
-   var c = req.body.colour;
-   User.findOne({_id:id},function(err,user){
+    var name = req.user.name;
+    var c = req.body.colour;
+    User.findOne({_id:id},function(err,user){
 	user.colour = c;
         user.save(function(err,updatedUser){
             if(err)
             throw err;
         });
     });
+    Message.find({}).sort('date').exec(function(err,messages){
+        messages.forEach(function(msg){
+            if(msg.user_name === req.user.name)
+            {
+                msg.colour = c;
+            }
+	    msg.save(function(err,updatedMsg){
+            	if(err)
+            	throw err;
+        });
 
-  res.json({'success':'Colour for user changed from '+c});
+    }); 
+});
+  res.json({'success':'Colour for user '+name+' changed'});
 });
 
 module.exports = router;
