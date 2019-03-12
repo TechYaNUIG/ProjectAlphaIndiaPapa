@@ -47,6 +47,13 @@ $(document).ready(function () {
                 	url: '/completeTask/' + event.target.name,
                 	type: 'PATCH',
                 	success: function (result) {
+			swal({
+				position: 'top-end',
+				type: 'success',
+				title: 'Task Completed!',
+				showConfirmButton: false,
+				timer: 1500
+			})
 			getTasks();
                 }
             });

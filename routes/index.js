@@ -110,12 +110,21 @@ router.get('/getTasks', function(req, res, next){
 router.delete('/removeTask/:id', function(req, res, next){
     var id = req.params.id;
     var currUser = req.user.name;  
-             Task.deleteOne({_id:id, user_name:currUser}, function (err, task) {
-                  if (err){
-                     res.send(err);
-	          }
-                   res.json(task);
-             });
+    Task.findOneAndDelete({_id:id, user_name:currUser}, function (err, task) {
+         if (err){
+             res.send(err);
+	 }
+	 if (task) {
+        	res.json(task);
+         }
+	else {
+        res.status(401).json({
+          "status": "info",
+          "body": "You are not permitted to delete this task"
+        });
+
+}
+     });
 });
 
 router.patch('/completeTask/:id', function(req, res, next){
@@ -128,6 +137,9 @@ router.patch('/completeTask/:id', function(req, res, next){
             if(err)
             throw err;
         });
+	if (task) {
+        	res.json(task);
+         }
     });
 });
 
