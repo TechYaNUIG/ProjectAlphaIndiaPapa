@@ -129,7 +129,6 @@ router.delete('/removeTask/:id', function(req, res, next){
 
 router.patch('/completeTask/:id', function(req, res, next){
     var id = req.params.id;
-
     Task.findOne({_id:id},function(err,task){
         task.completed =!task.completed;
 	task.completed_user_name =req.user.name;
@@ -142,5 +141,48 @@ router.patch('/completeTask/:id', function(req, res, next){
          }
     });
 });
+router.patch('/joinTask/:id', function(req, res, next){
+    var id = req.params.id;
+    var currUser = req.user.name; 
+
+    Task.findOne({_id:id},function(err,task){
+	var members = "";
+	if(task.members){
+        	members = task.members;
+  		var r = members.split(" ");
+		console.log(r);
+		var found = r.find(function(element) {
+  			return element === currUser;
+		});
+		if(found==currUser){
+			        res.status(401).json({
+          			"status": "info",
+          			"body": "You are already in this task group"
+        			});
+		}	
+		else {
+			task.members = members + currUser+ " ";
+        		task.save(function(err,updatedTask){
+            			if(err)
+            				throw err;
+       			 });
+			if (task) {
+        			res.json(task);
+         		}
+		}
+	}
+	else {
+		task.members = currUser+ " ";
+        	task.save(function(err,updatedTask){
+            		if(err)
+            			throw err;
+        		});
+			if (task) {
+        			res.json(task);
+         		}
+		}	
+    });
+});
+
 
 module.exports = router;

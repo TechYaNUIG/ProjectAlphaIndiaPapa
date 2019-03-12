@@ -36,6 +36,13 @@ html{
 background-color:#747474;
 color:WHITE;
 }
+.btn-task-join{
+    float:right;
+   margin-right: 10px;
+background-color:#747474;
+color:WHITE;
+}
+
 .btn-task-delete:hover{
 background-color:#515151;
 }
