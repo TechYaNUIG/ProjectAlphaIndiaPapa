@@ -5,7 +5,13 @@
             {{task}}
             <div class="task-user-name">	
                 Created by: {{user_name}}
-                <br>
+				<script type = "text/javascript">
+					var members = document.getElementById("{{_id}}3").innerHTML;
+					document.getElementById("{{{_id}}}4").innerHTML = "Group members: "+ members;
+				</script>
+				{{#if members}}<br>
+				<span id="{{_id}}4">Members data not loaded</span>
+				{{/if}}
 				<script type = "text/javascript">
 					var due = document.getElementById("{{_id}}2").innerHTML;
 					var year = due.substring(0,4);
@@ -35,15 +41,19 @@
 				{{#if completed}}<br>
 				Completed by: {{completed_user_name}}
 				{{else}}
-					{{#if date_due}}
+					{{#if date_due}}<br>
 					<span id="{{_id}}">'Due by' data not loaded</span>
-					<span class="blank" id="{{_id}}2">{{{date_due}}}</span>
 					{{/if}}				
-				{{/if}}      		
+				{{/if}} 
+				<span class="blank" id="{{_id}}3">{{{members}}}</span>
+				<span class="blank" id="{{_id}}2">{{{date_due}}}</span>				
 				</div>
         </h4>		
         <input type="checkbox" id="check-complete" name="{{_id}}" {{#if completed}} checked {{/if}}>
 		<button type="button" id="taskbutton" name="{{_id}}" class="btn btn-rnd btn-task-delete">Delete Task</button>
+		{{#if completed}}{{else}}
+		<button type="button" id="jointask" name="{{_id}}" class="btn btn-rnd btn-task-join">Join Task</button>
+		{{/if}}
         <span class="checkmark"></span>
     </label>
 </div>
