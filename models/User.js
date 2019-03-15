@@ -16,6 +16,10 @@ var UserSchema = new mongoose.Schema({
     date:{
         type: Date,
         default: Date.now
+    },
+    teams:{
+        type:Array,
+        default:[]
     }
 });
 

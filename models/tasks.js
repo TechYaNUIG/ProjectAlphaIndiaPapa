@@ -27,6 +27,10 @@ var tasksSchema = new Schema({
     completed: {
         type: Boolean,
         default:false
+    },
+    team_id:{
+        type:String,
+        required:true
     }
 });
 

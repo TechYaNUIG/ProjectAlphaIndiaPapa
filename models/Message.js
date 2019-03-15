@@ -20,6 +20,10 @@ var MessageSchema = new mongoose.Schema({
     colour:{
         type:String,
         default:null
+    },
+    team_id:{
+        type:String,
+        required:true
     }
 
 });
