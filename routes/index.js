@@ -84,7 +84,7 @@ router.post('/add-message/:id', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
-router.post('/add-task-message', ensureAuthenticated, (req, res, next) => {
+router.post('/add-task-message/:id', ensureAuthenticated, (req, res, next) => {
     message = new Message();
     message.user_name = req.user.name;
     message.text = req.body;
