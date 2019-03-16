@@ -5,6 +5,7 @@ $(document).ready(function(){
     getMessages();    
 
     $('#send-message').click(function(event){
+        currTeam = localStorage.getItem("currentTeam");
         var messageText = $('#message-text').val();
         $.ajax({
             type:'POST',

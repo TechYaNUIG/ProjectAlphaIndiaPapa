@@ -28,6 +28,7 @@ $(document).ready(function () {
     }
 
     $("#postBtn").click(function (event) {
+        currTeam = localStorage.getItem("currentTeam");
         $.ajax({
             url: '/addTask/'+currTeam,
             type: 'POST',
