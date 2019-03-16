@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
     userHasScrolled = false;
-
+    var currTeam = localStorage.getItem("currentTeam");
     getMessages();    
 
     $('#send-message').click(function(event){
         var messageText = $('#message-text').val();
         $.ajax({
             type:'POST',
-            url:'/add-message',
+            url:'/add-message/'+currTeam,
             data:{'text':messageText},
             success:function(data){
                 $('#message-text').val("");
@@ -18,16 +18,17 @@ $(document).ready(function(){
     });
 
     function getMessages(){
+        currTeam = localStorage.getItem("currentTeam");
         $.ajax({
             type: "GET",
-            url:"/get-messages",
+            url:"/get-messages/"+ currTeam,
             success:function(data){
                 var template = Handlebars.templates['messages'];
                 var templateData = template({messages:data});
                 $('#messages').html(templateData);
             }
         });
-        setTimeout(getMessages, 5000);
+        setTimeout(getMessages, 2000);
         scrollToBottom();
     }
 

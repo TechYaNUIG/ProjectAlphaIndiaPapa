@@ -1,0 +1,10 @@
+{{#each teams}}
+<div id="{{_id}}" class="list-item">
+    <label class="check-container">
+        <h4>
+            {{name}}
+        </h4>
+        <button type="button" id="team-button" name="{{_id}}" class="btn btn-rnd btn-task-join">Select Team</button>
+    </label>
+</div>
+{{/each}}

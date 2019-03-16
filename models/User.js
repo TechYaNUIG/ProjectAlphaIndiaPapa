@@ -17,10 +17,6 @@ var UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    teams:{
-        type:Array,
-        default:[]
-    }
 });
 
 var User = mongoose.model('User',UserSchema);

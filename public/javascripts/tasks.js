@@ -1,11 +1,11 @@
 $(document).ready(function () {
-
+    var currTeam = localStorage.getItem("currentTeam");
     getTasks();
 
     function addTaskMessage() {
         $.ajax({
             type: 'POST',
-            url: '/add-message',
+            url: '/add-message/'+currTeam,
             data: { style: "task-update", text: "New task created: " + $('#taskInput').val() },
             success: function (data) {
                 $('#message-text').val("");
@@ -14,8 +14,9 @@ $(document).ready(function () {
     }
 
     function getTasks() {
+        currTeam = localStorage.getItem("currentTeam");
         $.ajax({
-            url: '/getTasks/',
+            url: '/getTasks/'+currTeam,
             type: 'GET',
             success: function (data) {
                 var template = Handlebars.templates['tasks'];
@@ -28,7 +29,7 @@ $(document).ready(function () {
 
     $("#postBtn").click(function (event) {
         $.ajax({
-            url: '/addTask/',
+            url: '/addTask/'+currTeam,
             type: 'POST',
             data: { task: $('#taskInput').val(), date_due: $('#taskDeadline').val() },
             success: function (data) {
