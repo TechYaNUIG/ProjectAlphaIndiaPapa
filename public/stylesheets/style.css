@@ -294,25 +294,18 @@ border-color: #dc3545;
 
 .autocomplete-items {
     position: absolute;
-    border-radius: 20px;
-    border-width: 0;
     z-index: 99;
     /*position the autocomplete items to be the same width as the container:*/
     top: 77%;
     left: 0;
     right: 0;
-    width: 100%;
   }
   .autocomplete-items div {
     padding: 10px;
-    cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
+    background-color: #8d8d8d; 
+    margin: 0 15px;
   }
-  .autocomplete-items div:hover {
-    /*when hovering an item:*/
-    background-color: #e9e9e9; 
-  }
+  
   .autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important; 
@@ -327,4 +320,17 @@ border-color: #dc3545;
 
   #user-icon {
       padding: 10px 0;
+  }
+
+  #id-picker{
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: #fff;
+  }
+
+  #id-picker:hover{
+    cursor: pointer;
+    filter: brightness(200%);
   }
