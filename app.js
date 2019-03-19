@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 //DB Config
-var db = require('./Config/Keys').MongoURI;
+var db = require('./config/Keys').MongoURI;
 
 // Passport Config
 require('./config/passport')(passport);
