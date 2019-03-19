@@ -4,20 +4,37 @@ $(document).ready(function () {
     var currTeam = localStorage.getItem("currentTeam");
     getMessages();
 
-    $('#send-message').click(function (event) {
-        event.preventDefault();
+
+    $('#send-message').click(function(event){
+
+        event.preventDefault();        
         currTeam = localStorage.getItem("currentTeam");
         var messageText = $('#message-text').val();
-        $.ajax({
-            type: 'POST',
-            url: '/add-message/' + currTeam,
-            data: { 'text': messageText },
-            success: function (data) {
-                $('#message-text').val("");
-                getMessages();
-            }
-        });
-        scrollToBottom();
+        if(messageText ==="")
+        {
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: "Can't send an empty message!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        else
+        {
+            $.ajax({
+                type:'POST',
+                url:'/add-message/'+currTeam,
+                data:{'text':messageText},
+                success:function(data){
+                    $('#message-text').val("");
+                    getMessages();
+                }
+            });
+            
+            scrollToBottom();
+            
+        }
     });
 
     function getMessages() {
@@ -39,7 +56,7 @@ $(document).ready(function () {
         if (!userHasScrolled) {
             $('.message-section').scrollTop($('.message-section')[0].scrollHeight);
             $(".message-section").animate({
-                scrollTop: $(".message-section")[0].scrollHeight
+                scrollTop: $(".message-section")[0].scrollHeight- $('#messages')[0].clientHeight
             }, "slow");
         }
     }
