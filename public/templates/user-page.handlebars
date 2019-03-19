@@ -1,21 +1,22 @@
 <script src="/javascripts/tasks.js"></script>
 <script src="/javascripts/user-info.js"></script>
 <div class="col-md-12 text-center">
-    <a href="#"><i class="fas fa-user-circle fa-4x"></i></a></li>
+    <a href="#"><i class="fas fa-user-circle fa-4x" id="user-icon"></i></a></li>
     <h2>{{user_name}}</h2>
-	<script type = "text/javascript">
-	var colorButton = document.getElementById("primary_color");
-    colorButton.onchange = function() {
-        colorDiv.innerHTML = colorButton.value;
-        colorDiv.style.color = colorButton.value;
-    }
-	</script>
+    <script type="text/javascript">
+        var colorButton = document.getElementById("primary_color");
+        colorButton.onchange = function () {
+            colorDiv.innerHTML = colorButton.value;
+            colorDiv.style.color = colorButton.value;
+        }
+    </script>
     <div class="text-center mt-auto">
-	<div id="colourchangediv" class="btn btn-danger btn-rnd btn-color">
-        <button type="button" id="colourbutton" class="btn btn-danger btn-rnd btn-selecting-c">Set Color</button>
-		<input type="color" value="{{colour}}" name="{{_id}}" id="primary_color" class="field-radio">
-		</div>
+        <div id="colourchangediv" class="btn btn-danger btn-rnd btn-color">
+            <button type="button" id="colourbutton" class="btn btn-danger btn-rnd btn-selecting-c">Set Color</button>
+            <input type="color" value="{{colour}}" name="{{_id}}" id="primary_color" class="field-radio">
+        </div>
     </div>
-    <h4><b>My Tasks</b></h4>
+    <hr>
+    <h4 class="tasks-heading"><b>My Tasks</b></h4>
 </div>
 <div id="tasks" class="col-md-12 float-left tasks-section"></div>

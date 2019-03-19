@@ -318,3 +318,13 @@ border-color: #dc3545;
     background-color: DodgerBlue !important; 
     color: #ffffff; 
   }
+
+  .tasks-heading{
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 0;
+  }
+
+  #user-icon {
+      padding: 10px 0;
+  }

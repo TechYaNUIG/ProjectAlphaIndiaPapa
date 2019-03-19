@@ -1,8 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    var numGetMessages = 0;
     userHasScrolled = false;
-    var allowBottomScroll = true;
     var currTeam = localStorage.getItem("currentTeam");
     getMessages();
 
@@ -39,52 +37,40 @@ $(document).ready(function(){
         }
     });
 
-    function getMessages(){
+    function getMessages() {
         currTeam = localStorage.getItem("currentTeam");
         $.ajax({
             type: "GET",
-            url:"/get-messages/"+ currTeam,
-            success:function(data){
+            url: "/get-messages/" + currTeam,
+            success: function (data) {
                 var template = Handlebars.templates['messages'];
-                var templateData = template({messages:data});
+                var templateData = template({ messages: data });
                 $('#messages').html(templateData);
             }
         });
-        setTimeout(getMessages, 2000);
         scrollToBottom();
-        if(numGetMessages <3)
-                numGetMessages++;
+        setTimeout(getMessages, 2000);
     }
 
-    function scrollToBottom(){
-        if(!userHasScrolled && allowBottomScroll){
-            $('#messages').animate({
-                scrollTop:$('#messages')[0].scrollHeight - $('#messages')[0].clientHeight
-            },500);
-            //$('#messages').scrollTop($('#messages')[0].scrollHeight - $('#messages')[0].clientHeight);
+    function scrollToBottom() {
+        if (!userHasScrolled) {
+            $('.message-section').scrollTop($('.message-section')[0].scrollHeight);
+            $(".message-section").animate({
+                scrollTop: $(".message-section")[0].scrollHeight- $('#messages')[0].clientHeight
+            }, "slow");
         }
     }
 
-     $('.message-section').scroll(function(){
-         var percentScrolled = $('#messages').scrollTop()/$('#messages')[0].scrollHeight;
-         if(percentScrolled<0.88 && numGetMessages>=2)
-         {
-            userHasScrolled = true;
-         }
-         else if(numGetMessages <3)
-         {
-             userHasScrolled == false;
-         }
-         else{
-             userHasScrolled = false;
-         }
-     });
+    var lastScrollTop = 0;
 
-     $('.message-section').scroll(function() {
-         allowBottomScroll = false;
-        clearTimeout($.data(this, 'scrollTimer'));
-        $.data(this, 'scrollTimer', setTimeout(function() {
-            allowBottomScroll = true;
-        }, 2000));
+    $('.message-section').scroll(function () {
+        var st = $(this).scrollTop();
+        if (!(st > lastScrollTop)){
+            userHasScrolled = true;
+        } else if(st = $(".message-section")[0].scrollHeight){
+            userHasScrolled = false;
+        }
+        lastScrollTop = st;
     });
+
 });
