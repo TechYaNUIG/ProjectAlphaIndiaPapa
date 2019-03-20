@@ -3,7 +3,7 @@ $(document).ready(
 		$("#colourbutton").click(function (event) {
 			var c = $('#primary_color');
 			var colour = c.val();
-			var id = document.getElementById("primary_color").getAttribute("name");
+			var id = document.getElementById("#primary_color").getAttribute("name");
 			$.ajax({
 				url:'/users/change_colour/'+ id,
 				type:'PATCH',

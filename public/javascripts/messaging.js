@@ -17,7 +17,6 @@ function getMessages() {
 }
 
 function scrollToBottom() {
-    console.log(userHasScrolled);
     if (!userHasScrolled) {
         $('.message-section').scrollTop($('.message-section')[0].scrollHeight);
         $(".message-section").animate({

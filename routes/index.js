@@ -126,6 +126,7 @@ router.get('/get-user', ensureAuthenticated, (req, res, next) => {
     var currUser = req.user.name;
     var currColour = req.user.colour;
     var currId = req.user._id;
+    console.log(currUser);
     res.json({
         "user_name": currUser,
         "colour": currColour,
@@ -172,6 +173,15 @@ router.get('/getTasks/:id', function (req, res, next) {
     });
 });
 
+router.get('/get-userTasks/',ensureAuthenticated, function(req,res,next){
+    Task.find({ "members.user_id": req.user._id},function(err,tasks){
+        if(err)
+            res.send(err);
+
+           
+        res.json(tasks);
+    }).sort({completed:1}).sort({date_created:-1});
+});
 
 router.delete('/removeTask/:id', function (req, res, next) {
     var id = req.params.id;

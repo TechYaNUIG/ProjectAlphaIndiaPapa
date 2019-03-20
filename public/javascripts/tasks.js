@@ -16,7 +16,9 @@ $(document).ready(function () {
     }
 
     function getTasks() {
-        currTeam = localStorage.getItem("currentTeam");
+        if(currentScreen === "tasks-page")
+        {
+            currTeam = localStorage.getItem("currentTeam");
         $.ajax({
             url: '/getTasks/' + currTeam,
             type: 'GET',
@@ -72,7 +74,6 @@ $(document).ready(function () {
                     var outString = "";
                     if(dateString){
                         date = new Date(dateString);
-                    console.log(date + " string" + dateString);
                     var outString = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
                     }
                     return new Handlebars.SafeString(
@@ -87,6 +88,7 @@ $(document).ready(function () {
             }
         });
         setTimeout(getTasks, 10000);
+        }   
     }
 
     $("#postBtn").click(function (event) {
