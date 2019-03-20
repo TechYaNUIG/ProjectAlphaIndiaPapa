@@ -203,11 +203,14 @@ router.patch('/completeTask/:id', function (req, res, next) {
         task.completed = !task.completed;
         task.completed_user_name = req.user.name;
         task.save(function (err, updatedTask) {
-            if (err)
+        if (err)
                 throw err;
         });
         if (task) {
-            res.json(task);
+		if(task.completed){
+  		res.json({'success':'Task Completed'});}
+		if(!task.completed){
+  		res.json({'success':'Task Set In-Complete'});}
         }
     });
 });
