@@ -1,9 +1,34 @@
+userHasScrolled = false;
+var currTeam = localStorage.getItem("currentTeam");
+
+function getMessages() {
+    currTeam = localStorage.getItem("currentTeam");
+    $.ajax({
+        type: "GET",
+        url: "/get-messages/" + currTeam,
+        success: function (data) {
+            var template = Handlebars.templates['messages'];
+            var templateData = template({ messages: data });
+            $('#messages').html(templateData);
+        }
+    });
+    scrollToBottom();
+    setTimeout(getMessages, 2000);
+}
+
+function scrollToBottom() {
+    console.log(userHasScrolled);
+    if (!userHasScrolled) {
+        $('.message-section').scrollTop($('.message-section')[0].scrollHeight);
+        $(".message-section").animate({
+            scrollTop: $(".message-section")[0].scrollHeight- $('#messages')[0].clientHeight
+        }, "slow");
+    }
+}
+
 $(document).ready(function () {
 
-    userHasScrolled = false;
-    var currTeam = localStorage.getItem("currentTeam");
     getMessages();
-
 
     $('#send-message').click(function(event){
 
@@ -37,29 +62,6 @@ $(document).ready(function () {
         }
     });
 
-    function getMessages() {
-        currTeam = localStorage.getItem("currentTeam");
-        $.ajax({
-            type: "GET",
-            url: "/get-messages/" + currTeam,
-            success: function (data) {
-                var template = Handlebars.templates['messages'];
-                var templateData = template({ messages: data });
-                $('#messages').html(templateData);
-            }
-        });
-        scrollToBottom();
-        setTimeout(getMessages, 2000);
-    }
-
-    function scrollToBottom() {
-        if (!userHasScrolled) {
-            $('.message-section').scrollTop($('.message-section')[0].scrollHeight);
-            $(".message-section").animate({
-                scrollTop: $(".message-section")[0].scrollHeight- $('#messages')[0].clientHeight
-            }, "slow");
-        }
-    }
 
     var lastScrollTop = 0;
 

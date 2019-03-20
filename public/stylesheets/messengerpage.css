@@ -20,6 +20,9 @@
     font-size: 20px;
     padding-top: 10px;
 }
+.task-due-in span{
+    color:#fc5b57
+}
 .blank{
     color:#fff;
     font-size: 1px;
@@ -27,8 +30,8 @@
 
 .task-user-name{
     color:#747474;
-    font-size: 15px;
-    padding-top: 10px;
+    font-size: 14px;
+    padding-top: 5px;
 }
 
 .list-item{

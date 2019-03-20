@@ -33,20 +33,20 @@ router.get('/', ensureAuthenticated, (req, res) => {
 //Create a Team
 router.post('/create-team', ensureAuthenticated, (req, res, next) => {
     team = new Team();
-    var currId = {user_id: req.user._id};
+    var currId = { user_id: req.user._id };
     var data = req.body;
     team.name = data.name;
-    data.members.forEach(function(element){
+    data.members.forEach(function (element) {
         team.members.push(element);
     });
     team.members.push(currId);
     console.log(team);
 
     team.save((err, createdTeam) => {
-        if (err){
+        if (err) {
             throw err;
         }
-        
+
         res.json({
             "id": createdTeam,
             "message": createdTeam.name
@@ -59,9 +59,9 @@ router.get('/get-teams', ensureAuthenticated, (req, res, next) => {
     var userId = req.user._id;
     Team.find({
         "members.user_id": userId
-    }, (err,teams) => {
-        if(err)
-         throw err;
+    }, (err, teams) => {
+        if (err)
+            throw err;
         res.json(teams);
     });
 });
@@ -133,13 +133,13 @@ router.get('/get-user', ensureAuthenticated, (req, res, next) => {
     });
 });
 
-router.get('/search-users/:search_string',ensureAuthenticated,(req,res,next)=>{
+router.get('/search-users/:search_string', ensureAuthenticated, (req, res, next) => {
     var searchString = req.params.search_string;
-    User.findOne({"name":searchString}, (err, user)=>{
-        if(err)
-         throw err;
+    User.findOne({ "name": searchString }, (err, user) => {
+        if (err)
+            throw err;
 
-         res.json(user);
+        res.json(user);
     });
 });
 
@@ -214,43 +214,28 @@ router.patch('/completeTask/:id', function (req, res, next) {
 router.patch('/joinTask/:id', function (req, res, next) {
     var id = req.params.id;
     var currUser = req.user.name;
+    var newUser = {user_id: req.user._id, user_name: req.user.name};
 
-    Task.findOne({
-        _id: id
-    }, function (err, task) {
-        var members = "";
-        if (task.members) {
-            members = task.members;
-            var r = members.split(" ");
-            console.log(r);
-            var found = r.find(function (element) {
-                return element === currUser;
+    Task.findOne({_id:id, "members.user_id": req.user._id}).then(task=>{
+        if(task)
+        {
+            res.status(401).json({
+                "status": "info",
+                "body": "You are already in this task group"
             });
-            if (found == currUser) {
-                res.status(401).json({
-                    "status": "info",
-                    "body": "You are already in this task group"
-                });
-            } else {
-                task.members = members + currUser + " ";
-                task.save(function (err, updatedTask) {
-                    if (err)
-                        throw err;
-                });
-                if (task) {
-                    res.json(task);
-                }
-            }
-        } else {
-            task.members = currUser + " ";
-            task.save(function (err, updatedTask) {
-                if (err)
-                    throw err;
-            });
-            if (task) {
-                res.json(task);
-            }
         }
+        else{
+            Task.updateOne({_id:id},{$push:{members:newUser}},function(err,task){
+                if(err)
+                {
+                    throw err;
+                }
+
+                res.json(task);
+            });
+        }
+    }).catch(function(err){
+        console.log(err);
     });
 });
 

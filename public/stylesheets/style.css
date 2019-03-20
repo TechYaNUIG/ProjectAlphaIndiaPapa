@@ -253,6 +253,10 @@ border-color: #dc3545;
     -ms-user-select: none;
     user-select: none;
 }
+
+.check-container h4{
+    margin-bottom: 0;
+}
   
 .check-container input {
     position: absolute;

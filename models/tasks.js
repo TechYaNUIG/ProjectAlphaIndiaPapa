@@ -9,9 +9,10 @@ var tasksSchema = new Schema({
     task: {
         type: String
     },
-    members: {
-        type: String
-    },
+    members: [{
+        user_id:String,
+        user_name: String
+    }],
     date_created: {
         type: Date,
         default: new Date()

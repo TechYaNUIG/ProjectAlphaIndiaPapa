@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
     var currTeam = localStorage.getItem("currentTeam");
     getTasks();
@@ -5,7 +7,7 @@ $(document).ready(function () {
     function addTaskMessage() {
         $.ajax({
             type: 'POST',
-            url: '/add-message/'+currTeam,
+            url: '/add-message/' + currTeam,
             data: { style: "task-update", text: "New task created: " + $('#taskInput').val() },
             success: function (data) {
                 $('#message-text').val("");
@@ -16,9 +18,69 @@ $(document).ready(function () {
     function getTasks() {
         currTeam = localStorage.getItem("currentTeam");
         $.ajax({
-            url: '/getTasks/'+currTeam,
+            url: '/getTasks/' + currTeam,
             type: 'GET',
             success: function (data) {
+
+                Handlebars.registerHelper('formatDate2', function (dateString) {
+                    var outString = "";
+                    if (dateString) {
+                        var today = new Date();
+                        date = new Date(dateString);
+                        
+                        if (today.getFullYear() != date.getFullYear()) {
+                            if (today.getFullYear > date.getFullYear) {
+                                outString = "<span>"+"Overdue by: " + (today.getFullYear() - date.getFullYear()) + " years"+"</span>";
+                            }
+                            else if ((date.getFullYear() - today.getFullYear()) == 1) {
+                                outString = "<span>"+"Due in: 1 year"+"</span>";
+                            }
+                            else {
+                                outString = "<span>"+"Due in: " + (date.getFullYear() - today.getFullYear())+"</span>";
+                            }
+                        }
+                        else if (today.getMonth() != date.getMonth()) {
+                            if (today.getMonth() > date.getMonth()) {
+                                outString = "<span>"+ "Overdue by: " +(today.getMonth() - date.getMonth()) + " months"+"</span>";
+                            }
+                            else if ((date.getMonth() - today.getMonth()) == 1) {
+                                outString = "Due in: "+"<span>"+"1 month"+"</span>";
+                            }
+                            else {
+                                outString = "Due in: " + "<span>"+(date.getMonth() - today.getMonth())+"</span>";
+                            }
+                        }
+                        else if (today.getDate() != date.getDate()) {
+                            if (today.getDate() > date.getDate()) {
+                                outString = "<span>"+"Overdue by: " + (today.getDate() - date.getDate()) + " days"+"</span>";
+                            }
+                            else if ((date.getDate() - today.getDate()) == 1) {
+                                outString = "Due in:"+"</span>"+ "1 day"+"</span>";
+                            }
+                            else {
+                                outString = "Due in: " + "<span>"+(date.getDate() - today.getDate())+" days"+"</span>";
+                            }
+                        }
+                        else {
+                            outString = "<span>"+"+Due today"+"</span>";
+                        }
+                    }
+                    return new Handlebars.SafeString(outString);
+                });
+
+                Handlebars.registerHelper('formatDate1', function (dateString) {
+                    var outString = "";
+                    if(dateString){
+                        date = new Date(dateString);
+                    console.log(date + " string" + dateString);
+                    var outString = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+                    }
+                    return new Handlebars.SafeString(
+                        outString
+                    );
+                });
+
+
                 var template = Handlebars.templates['tasks'];
                 var templateData = template({ task: data });
                 $('#tasks').html(templateData);
@@ -30,7 +92,7 @@ $(document).ready(function () {
     $("#postBtn").click(function (event) {
         currTeam = localStorage.getItem("currentTeam");
         $.ajax({
-            url: '/addTask/'+currTeam,
+            url: '/addTask/' + currTeam,
             type: 'POST',
             data: { task: $('#taskInput').val(), date_due: $('#taskDeadline').val() },
             success: function (data) {
@@ -41,72 +103,72 @@ $(document).ready(function () {
             }
         });
     });
-$("#tasks").click(function (event) {
-	if (event.target.name) {
-		if(event.target.id=="check-complete") {
-            	$.ajax({
-                	url: '/completeTask/' + event.target.name,
-                	type: 'PATCH',
-                	success: function (result) {
-					swal({
-						position: 'top-end',
-						type: 'success',
-						title: 'Task Completed!',
-						showConfirmButton: false,
-						timer: 1500
-					})
-					getTasks();
-					}
-				});
-		}
-        if(event.target.id=="taskbutton") {
-            $.ajax({
-                url: '/removeTask/' + event.target.name,
-                type: 'DELETE',
-                success: function (result) {
-				swal({
-					position: 'top-end',
-					type: 'success',
-					title: 'Task Deleted!',
-					showConfirmButton: false,
-					timer: 1500
-				})
-                getTasks();
-                },
-				error: function (errMsg) {
-					swal(
-						'Oops...',
-						errMsg.responseJSON.body,
-						'error'
-					)
-				}
-            });
-		}
-		if(event.target.id=="jointask") {
-            $.ajax({
-                url: '/joinTask/' + event.target.name,
-                type: 'PATCH',
-                success: function (result) {
-				swal({
-					position: 'top-end',
-					type: 'success',
-					title: 'Task Joined!',
-					showConfirmButton: false,
-					timer: 1500
-				})
-                getTasks();
-                },
-				error: function (errMsg) {
-					swal(
-						'Oops...',
-						errMsg.responseJSON.body,
-						'error'
-					)
-				}
-            });
-		}
-    }   
-});
+    $("#tasks").click(function (event) {
+        if (event.target.name) {
+            if (event.target.id == "check-complete") {
+                $.ajax({
+                    url: '/completeTask/' + event.target.name,
+                    type: 'PATCH',
+                    success: function (result) {
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Task Completed!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        getTasks();
+                    }
+                });
+            }
+            if (event.target.id == "taskbutton") {
+                $.ajax({
+                    url: '/removeTask/' + event.target.name,
+                    type: 'DELETE',
+                    success: function (result) {
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Task Deleted!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        getTasks();
+                    },
+                    error: function (errMsg) {
+                        swal(
+                            'Oops...',
+                            errMsg.responseJSON.body,
+                            'error'
+                        )
+                    }
+                });
+            }
+            if (event.target.id == "jointask") {
+                $.ajax({
+                    url: '/joinTask/' + event.target.name,
+                    type: 'PATCH',
+                    success: function (result) {
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Task Joined!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        getTasks();
+                    },
+                    error: function (errMsg) {
+                        swal(
+                            'Oops...',
+                            errMsg.responseJSON.body,
+                            'error'
+                        )
+                    }
+                });
+            }
+        }
+    });
 
 });
 
