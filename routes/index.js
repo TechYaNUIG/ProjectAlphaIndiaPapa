@@ -13,20 +13,8 @@ var User = require('../models/User');
 router.get('/', ensureAuthenticated, (req, res) => {
     var currUser = req.user.name;
 
-    Message.find({}).sort('date').exec(function (err, messages) {
-        messages.forEach(function (msg) {
-            if (msg.user_name === currUser) {
-                msg.style = 'msg-sent';
-                msg.user_name = 'You';
-            } else {
-                msg.style = 'msg-received';
-            }
-        });
         res.render('index', {
-            title: 'TechYa',
-            message: messages
-        });
-    });
+            title: 'TechYa'});
 });
 
 
