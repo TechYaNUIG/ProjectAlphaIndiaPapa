@@ -111,11 +111,12 @@ $(document).ready(function () {
                 $.ajax({
                     url: '/completeTask/' + event.target.name,
                     type: 'PATCH',
-                    success: function (result) {
+                    success: function (response) {
+			var msg = response.success;
                         swal({
                             position: 'top-end',
                             type: 'success',
-                            title: 'Task Completed!',
+			    title:msg,
                             showConfirmButton: false,
                             timer: 1500
                         })
