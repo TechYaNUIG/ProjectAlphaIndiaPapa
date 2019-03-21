@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 
     getTeams();
@@ -42,7 +43,7 @@ $(document).ready(function () {
                     success: function (user) {
                         console.log(user);
                         var template = Handlebars.templates['autocomplete'];
-                        var templateData = $(template(user)).on('click',function(){
+                        var templateData = $(template(user[0])).on('click',function(){
                             var id = {
                                 user_id: $('#idVal').val()
                             };
@@ -51,7 +52,7 @@ $(document).ready(function () {
                             $('#autocomplete-list').remove();
                             $('#user-search').val('');
                             var originalHtml = $('#people-list').html();
-                             var newUserHtml = "<li><a style='color:"+user.colour+";'><i class='fas fa-user-circle fa-2x'></i></a></li>";
+                             var newUserHtml = "<li><a style='color:"+user[0].colour+";'><i id='"+id.user_id+"' class='fas fa-user-circle fa-2x'></i></a></li>";
                              var newHtml = newUserHtml+originalHtml;
                             $('#people-list').html(newHtml);
                         });
@@ -69,10 +70,17 @@ $(document).ready(function () {
 
     });
 
-    function autocompleteHandler(user)
-    {
-        
-    }
+   $('#people-list').click(function (e) { 
+       var id =event.target.id;
+        for(var i=0;i<userIds.length;i++){
+            var x = userIds[i];
+            if(x.user_id ===id)
+            {
+                userIds.splice(i,1);
+                $('#'+id).closest('li').remove();
+            }
+        }
+   });
 
     function getTeams() {
         $.ajax({
