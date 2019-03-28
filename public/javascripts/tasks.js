@@ -31,43 +31,71 @@ $(document).ready(function () {
                         date = new Date(dateString);
                         
                         if (today.getFullYear() != date.getFullYear()) {
-                            if (today.getFullYear > date.getFullYear) {
-                                outString = "<span>"+"Overdue by: " + (today.getFullYear() - date.getFullYear()) + " years"+"</span>";
+                            if (today.getFullYear() > (date.getFullYear()+1)) {
+                                outString = "<span>"+ "Overdue by: " +(today.getFullYear() - date.getFullYear()) + " years"+"</span>";
                             }
-                            else if ((date.getFullYear() - today.getFullYear()) == 1) {
-                                outString = "<span>"+"Due in: 1 year"+"</span>";
+			    else if (today.getFullYear() == (date.getFullYear()+1)) {
+                                outString = "<span>"+ "Overdue by: 1 year"+"</span>";
                             }
-                            else {
-                                outString = "<span>"+"Due in: " + (date.getFullYear() - today.getFullYear())+"</span>";
+			    else if (date.getFullYear() > (today.getFullYear()+1)) {
+                                outString = "Due in: " + "<span>"+(date.getFullYear() - today.getFullYear())+ " years"+"</span>";
                             }
+			    else {
+				outString = "Due in: " + "<span>"+(12-(date.getMonth() - today.getMonth()))+ " months"+"</span>";
+			    }
                         }
                         else if (today.getMonth() != date.getMonth()) {
-                            if (today.getMonth() > date.getMonth()) {
+                            if (today.getMonth() > (date.getMonth()+1)) {
                                 outString = "<span>"+ "Overdue by: " +(today.getMonth() - date.getMonth()) + " months"+"</span>";
                             }
-                            else if ((date.getMonth() - today.getMonth()) == 1) {
-                                outString = "Due in: "+"<span>"+"1 month"+"</span>";
+			    else if (today.getMonth() == (date.getMonth()+1)) {
+                                outString = "<span>"+ "Overdue by: 1 month"+"</span>";
                             }
-                            else {
-                                outString = "Due in: " + "<span>"+(date.getMonth() - today.getMonth())+"</span>";
+
+			    else if (date.getMonth() > (today.getMonth()+1)) {
+                                outString = "Due in: " + "<span>"+(date.getMonth() - today.getMonth())+ " months"+"</span>";
                             }
+			    else{
+				if (((date.getDate() - today.getDate())<-1)) {
+                                var c = -1;
+				var month = date.getMonth();
+				if(month==9||month==4||month==6||month==11){
+					c = 30;
+				}
+				else if(month!=2){
+					c = 31;
+				}
+				else{
+					c = 28;
+				}
+				if (date.getMonth() > (today.getMonth())) {
+                                	outString ="Due in: " + "<span>"+((date.getDate() - today.getDate())+c)+" days"+"</span>";
+				}
+				else if(date.getMonth() == (today.getMonth())){
+					outString = "<span>"+"Overdue by: " + (today.getDate() - date.getDate()) + " days"+"</span>";
+				}
+                            }
+			    }
                         }
                         else if (today.getDate() != date.getDate()) {
-                            if (today.getDate() > date.getDate()) {
-                                outString = "<span>"+"Overdue by: " + (today.getDate() - date.getDate()) + " days"+"</span>";
+
+			    if ((today.getDate() - date.getDate()) == 1) {
+                                outString = "<span>"+"Overdue by:  1 day"+"</span>";
+                            }
+			    else if ((today.getDate() - date.getDate()) > 1) {
+                                outString = "<span>"+"Overdue by:  "+(today.getDate() - date.getDate())+" days"+"</span>";
                             }
                             else if ((date.getDate() - today.getDate()) == 1) {
-                                outString = "Due in:"+"</span>"+ "1 day"+"</span>";
+                                outString = "Due in: "+"<span>"+"1 day"+"</span>";
                             }
                             else {
-                                outString = "Due in: " + "<span>"+(date.getDate() - today.getDate())+" days"+"</span>";
+                                outString = "Due in: "+"<span>"+(date.getDate() - today.getDate())+" days"+"</span>";
                             }
                         }
                         else {
-                            outString = "<span>"+"+Due today"+"</span>";
+                            outString = "<span>"+"Due today"+"</span>";
                         }
-                    }
-                    return new Handlebars.SafeString(outString);
+                    }                    return new Handlebars.SafeString(outString);
                 });
 
                 Handlebars.registerHelper('formatDate1', function (dateString) {
