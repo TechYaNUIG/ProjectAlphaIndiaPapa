@@ -77,7 +77,13 @@ $(document).ready(function () {
 
    $('#people-list').click(function (e) { 
        var id =event.target.id;
+       var peopleList = [];
 	if(id="postBtn"){
+    var total = $('#people-list li').length;
+     $('#people-list li').each(function(index){
+         if(index == total-1)
+            peopleList.push($(this).html());
+        });
 		$.ajax({
             		type: "POST",
             		url: "/create-team/",
@@ -87,7 +93,8 @@ $(document).ready(function () {
                 		members: userIds
             		}),
             		success: function (data) {
-                		$('#team-input').val("");
+                        $('#team-input').val("");
+                        $('#people-list').html("<li class='float-right'>"+peopleList[0]+"</li>");
                 		getTeams();
             		}
         	});
