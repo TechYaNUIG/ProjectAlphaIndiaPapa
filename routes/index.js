@@ -17,15 +17,20 @@ router.get('/', ensureAuthenticated, (req, res) => {
             title: 'TechYa'});
 });
 
-
 //Create a Team
 router.post('/create-team', ensureAuthenticated, (req, res, next) => {
+    var a = "spaceholder";
     team = new Team();
-    var currId = { user_id: req.user._id };
+    var currId = { user_id: req.user._id , user_name: req.user.name};
     var data = req.body;
     team.name = data.name;
     data.members.forEach(function (element) {
-        team.members.push(element);
+	User.findOne({_id:element},function(err,user){
+		a = user.name;
+		console.log(a);
+	});
+	var curr = { user_id: element, user_name: a};
+	team.members.push(curr);
     });
     team.members.push(currId);
     console.log(team);

@@ -1,9 +1,11 @@
 
+
 $(document).ready(function () {
 
     getTeams();
 
     var userIds = new Array();
+    var userNames = new Array();
 
     $('#teams').click(function (event) {
         if (event.target.name) {
@@ -28,6 +30,7 @@ $(document).ready(function () {
             }
         });
         userIds = [];
+	userNames = [];
     });
 
     $('#user-search').keyup(function (e) {
@@ -41,14 +44,16 @@ $(document).ready(function () {
                     type: "GET",
                     url: "/search-users/" + searchString,
                     success: function (user) {
-                        console.log(user);
                         var template = Handlebars.templates['autocomplete'];
                         var templateData = $(template(user[0])).on('click',function(){
                             var id = {
                                 user_id: $('#idVal').val()
                             };
-                            userIds.push(id);
-                            console.log(userIds);
+			    var name = {
+                                user_name: $('id-picker').val()
+                            };
+                            userIds.push($('#idVal').val());
+			    userNames.push($('id-picker').val());
                             $('#autocomplete-list').remove();
                             $('#user-search').val('');
                             var originalHtml = $('#people-list').html();
@@ -72,14 +77,34 @@ $(document).ready(function () {
 
    $('#people-list').click(function (e) { 
        var id =event.target.id;
-        for(var i=0;i<userIds.length;i++){
-            var x = userIds[i];
-            if(x.user_id ===id)
-            {
-                userIds.splice(i,1);
-                $('#'+id).closest('li').remove();
-            }
-        }
+	if(id="postBtn"){
+		$.ajax({
+            		type: "POST",
+            		url: "/create-team/",
+           		contentType: 'application/json',
+            		data: JSON.stringify({
+                		name: $('#team-input').val(),
+                		members: userIds
+            		}),
+            		success: function (data) {
+                		$('#team-input').val("");
+                		getTeams();
+            		}
+        	});
+        userIds = [];
+	userNames = [];
+
+	}
+	else{
+        	for(var i=0;i<userIds.length;i++){
+        	    var x = userIds[i];
+        	    if(x.user_id ===id)
+        	    {
+        	        userIds.splice(i,1);
+        	        $('#'+id).closest('li').remove();
+        	    }
+       	 	}
+	}
    });
 
     function getTeams() {
