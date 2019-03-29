@@ -48,10 +48,10 @@ $(document).ready(function () {
                                 user_id: $('#idVal').val()
                             };
                             var name = {
-                                user_name: $('id-picker').val()
+                                user_name: $('#id-picker').val()
                             };
                             userIds.push($('#idVal').val());
-                            userNames.push($('id-picker').val());
+                            userNames.push($('#id-picker').val());
                             $('#autocomplete-list').remove();
                             $('#user-search').val('');
                             var originalHtml = $('#people-list').html();
@@ -100,7 +100,8 @@ $(document).ready(function () {
                     contentType: 'application/json',
                     data: JSON.stringify({
                         name: $('#team-input').val(),
-                        members: userIds
+                        members: userIds,
+			membersNm: userNames
                     }),
                     success: function (data) {
                         $('#team-input').val("");
