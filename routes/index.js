@@ -124,13 +124,13 @@ router.get('/get-user', ensureAuthenticated, (req, res, next) => {
 
 router.get('/search-users/:search_string', ensureAuthenticated, (req, res, next) => {
     var searchString = req.params.search_string;
-    User.find({$text:{$search:searchString}}, (err, user) => {
+    User.find({$text:{$search:searchString}},{ score: { $meta: "textScore" } }, (err, user) => {
         if (err)
             throw err;
 
             console.log(user);
         res.json(user);
-    });
+    }).sort({score:{$meta:"textScore"}});
 });
 
 router.post('/addTask/:id', function (req, res, next) {
