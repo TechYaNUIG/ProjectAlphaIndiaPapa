@@ -516,7 +516,7 @@ html{
     padding-left: 0px;
 }
 
-.tasks-section{
+.tasks-section, .teams-section{
     position: absolute;
     height: 75%;
     overflow-y: scroll;
