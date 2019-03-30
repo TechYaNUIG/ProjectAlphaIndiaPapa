@@ -1,5 +1,72 @@
 $(document).ready(function () {
     getTasks();
+$("#tasks").click(function (event) {
+        if (event.target.name) {
+            if (event.target.id == "check-complete") {
+                $.ajax({
+                    url: '/completeTask/' + event.target.name,
+                    type: 'PATCH',
+                    success: function (response) {
+			var msg = response.success;
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+			    title:msg,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        getTasks();
+                    }
+                });
+            }
+            if (event.target.id == "taskbutton") {
+                $.ajax({
+                    url: '/removeTask/' + event.target.name,
+                    type: 'DELETE',
+                    success: function (result) {
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Task Deleted!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        getTasks();
+                    },
+                    error: function (errMsg) {
+                        swal(
+                            'Oops...',
+                            errMsg.responseJSON.body,
+                            'error'
+                        )
+                    }
+                });
+            }
+            if (event.target.id == "jointask") {
+                $.ajax({
+                    url: '/joinTask/' + event.target.name,
+                    type: 'PATCH',
+                    success: function (result) {
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Task Joined!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        getTasks();
+                    },
+                    error: function (errMsg) {
+                        swal(
+                            'Oops...',
+                            errMsg.responseJSON.body,
+                            'error'
+                        )
+                    }
+                });
+            }
+        }
+});
     function getTasks() {
         if(currentScreen === "user-page")
         {
