@@ -6,6 +6,7 @@ $(document).ready(function () {
     var userNames = new Array();
 
     $('#teams').click(function (event) {
+        console.log("clicked");
         if (event.target.name) {
             localStorage.setItem("currentTeam", event.target.name);
             console.log(localStorage.getItem("currentTeam"));
