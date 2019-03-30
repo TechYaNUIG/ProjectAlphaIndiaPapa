@@ -10,6 +10,8 @@ router.get('/login', function (req, res, next) {
   res.render('login');
 });
 
+
+
 router.get('/current-user',function(req,res,next){
   res.json({'name':req.user.name});
 });
@@ -52,6 +54,14 @@ router.post('/register', (req, res) => {
           }));
       }
     });
+});
+
+router.get('/google',passport.authenticate('google',{
+    scope:['profile']
+}));
+
+router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
+  res.redirect('../../');
 });
 
 //login handle

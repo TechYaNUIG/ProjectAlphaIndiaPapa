@@ -7,7 +7,7 @@ var UserSchema = new mongoose.Schema({
     },
     password:{
         type: String,
-        required: true
+        required: false
     },
     colour:{
         type: String,
@@ -17,6 +17,10 @@ var UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    googleID:{
+        type:String,
+        default:null
+    }
 });
 
 var User = mongoose.model('User',UserSchema);

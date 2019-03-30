@@ -91,23 +91,31 @@ router.post('/add-task-message/:id', ensureAuthenticated, (req, res, next) => {
 router.get('/get-messages/:id', ensureAuthenticated, (req, res, next) => {
     var teamId = req.params.id;
     var currUser = req.user.name;
-    Message.find({
-        "team_id": teamId
-    }).sort('date').exec(function (err, messages) {
-        messages.forEach(function (msg) {
-            if (msg.user_name === currUser) {
-                msg.style = 'msg-sent';
-                msg.user_name = 'You';
-            } else {
-                msg.style = 'msg-received';
-            }
 
-            if (msg.text.includes("New task created:")) {
-                msg.style = 'msg-task-created';
-            }
-        });
-        res.json(messages);
+    Team.findOne({_id:teamId, "members.user_id": req.user._id}).then((user)=>{
+        if(user){
+            Message.find({
+                "team_id": teamId
+            }).sort('date').exec(function (err, messages) {
+                messages.forEach(function (msg) {
+                    if (msg.user_name === currUser) {
+                        msg.style = 'msg-sent';
+                        msg.user_name = 'You';
+                    } else {
+                        msg.style = 'msg-received';
+                    }
+        
+                    if (msg.text.includes("New task created:")) {
+                        msg.style = 'msg-task-created';
+                    }
+                });
+                res.json(messages);
+            });
+        }else{
+            res.json([{"text":"Please select/create a team", "style":"msg-task-created","user_name":"System"}]);
+        }
     });
+    
 });
 
 router.get('/get-user', ensureAuthenticated, (req, res, next) => {

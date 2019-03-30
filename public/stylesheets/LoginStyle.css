@@ -63,6 +63,13 @@ input {
 .form .register-form {
   display: none;
 }
+.google-btn{
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding:10px;
+  background: #ff5353;
+}
 body {
   background: #747474;
 }
