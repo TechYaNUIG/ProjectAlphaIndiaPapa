@@ -85,8 +85,8 @@ router.post('/login',(req,res,next)=>{
 //logout handle
 router.get('/logout',(req,res)=>{
   var outuser = req.user.name;
-  req.logOut();
   console.log(outuser);
+  req.logOut();
   res.json({'success':'Logged out '+outuser});
 });
 

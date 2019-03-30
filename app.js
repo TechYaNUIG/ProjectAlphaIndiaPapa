@@ -6,11 +6,17 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var session = require('express-session');
 const passport = require('passport');
+const cookieSession = require('cookie-session');
+var keys = require('../ProjectAlphaIndiaPapa/config/Keys');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(cookieSession({
+  maxAge:24*60*60*1000,
+  keys:[keys.session.cookieKey]
+}));
 
 //DB Config
 var db = require('./config/Keys').MongoURI;
