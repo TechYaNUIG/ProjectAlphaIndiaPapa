@@ -10,7 +10,9 @@ var TeamSchema = new mongoose.Schema({
         default: Date.now
     },
     members:[{
-        user_id:String
+        user_id:String,
+        user_name: String
+
     }]
 });
 

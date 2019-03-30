@@ -4,6 +4,9 @@
         <h4>
             {{name}}
         </h4>
+	{{#if members}}
+		Group members: {{#each members}}{{user_name}},&nbsp;{{/each}}<br>
+	{{/if}}
         <button type="button" id="team-button" name="{{_id}}" class="btn btn-rnd btn-task-join">Select Team</button>
     </label>
 </div>

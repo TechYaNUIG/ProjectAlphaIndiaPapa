@@ -1,20 +1,39 @@
+<script>
+
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+
+</script>
+
 <div class="container-full h-100">
-    <div class="row h-100">
-        <div id="left-sidebar-wrapper" class="col-md-1 col-lg-1 d-flex flex-column">
-            <ul class="nav flex-column align-items-center">
-                <li id="user-profile" class="nav-item"><a href="#"><i class="fas fa-user-circle fa-4x"></i></a></li>
-                <li id="teams-page" class="nav-item"><a href="#"><i class="fas fa-users fa-3x"></i></a></li>
-                <li id="tasks-page" class="nav-item"><a href="#"><i class="fas fa-tasks fa-3x"></i></a></li>
-            </ul>
-            <div class="text-center mt-auto">
-                <button id="sign-out-button" type="button" class="btn btn-danger btn-rnd">Sign out</button>
-            </div>
 
-        </div>
-        <div id="inner-sidebar-wrapper" class="col-md-3 col-lg-3">
+    <div class="left-sidebar-wrapper" id="mySidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <ul class="nav flex-column align-items-center">
+            <li id="user-profile" class="nav-item"><a href="#" onclick="closeNav()"><i class="fas fa-user fa-4x"></i></a></li>
+            <li id="teams-page" class="nav-item"><a href="#" onclick="closeNav()"><i class="fas fa-users fa-4x"></i></a></li>
+            <li id="tasks-page" class="nav-item"><a href="#" onclick="closeNav()"><i class="fas fa-list fa-4x"></i></a></li>
+             <li id="message-page" class="nav-item d-block d-md-none"><a href="#" onclick="closeNav()"><i class="fas fa-comment-dots fa-4x"></i></a></li>
+        </ul>
+        <div class="text-center sign-out">
+            <button id="sign-out-button" type="button" class="btn btn-danger btn-rnd">Sign out</button>
         </div>
 
-        <div class="col">
+    </div>
+
+
+    <div class="row h-100" id="main">
+        <div id="inner-sidebar-wrapper" class="col-md-4 col-lg-4">
+        </div>
+
+        <div class="col-md-8 col-lg-8 d-none d-md-block">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">Chat</h1>
@@ -22,7 +41,7 @@
             </div>
             <div class="row">
                 <div id="messages" class="col-md-12 message-section">
-                
+
                     <div class="msg-task-created">
                         <div style="border-color:rgb(98,191,247);">
                             <p>Create or join a team to see messages</p>
@@ -35,9 +54,8 @@
             <div class="message-sender-section">
                 <form>
                     <div class="input-group mb-3">
-                        <input id="message-text" type="text" class="form-control input-msg-txt"
-                            placeholder="Type a message..." aria-label="Type a message..."
-                            aria-describedby="basic-addon2">
+                        <input id="message-text" type="text" class="form-control input-msg-txt" placeholder="Type a message..."
+                            aria-label="Type a message..." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <input id="send-message" type="submit" value="Send" class="btn input-msg-btn" />
                         </div>
@@ -47,4 +65,3 @@
         </div>
     </div>
 </div>
-

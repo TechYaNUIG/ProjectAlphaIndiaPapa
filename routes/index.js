@@ -17,20 +17,20 @@ router.get('/', ensureAuthenticated, (req, res) => {
             title: 'TechYa'});
 });
 
-
 //Create a Team
 router.post('/create-team', ensureAuthenticated, (req, res, next) => {
     team = new Team();
-    var currId = { user_id: req.user._id };
+    var currId = { user_id: req.user._id , user_name: req.user.name};
     var data = req.body;
     team.name = data.name;
-    data.members.forEach(function (element) {
-        team.members.push(element);
-    });
-    team.members.push(currId);
-    console.log(team);
+	for(var s=0;data.members[s]!=null;s++){
+		var curr = { user_id: data.members[s], user_name: data.membersNm[s]};
+		team.members.push(curr);
+	}
+    	team.members.push(currId);
+    	console.log(team);
 
-    team.save((err, createdTeam) => {
+    	team.save((err, createdTeam) => {
         if (err) {
             throw err;
         }
@@ -128,7 +128,6 @@ router.get('/search-users/:search_string', ensureAuthenticated, (req, res, next)
         if (err)
             throw err;
 
-            console.log(user);
         res.json(user);
     }).sort({score:{$meta:"textScore"}});
 });
