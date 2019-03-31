@@ -303,14 +303,14 @@ html{
     position: absolute;
     z-index: 99;
     /*position the autocomplete items to be the same width as the container:*/
-    top: 77%;
+    top: 85%;
     left: 0;
     right: 0;
   }
   .autocomplete-items div {
     padding: 10px;
-    background-color: #8d8d8d; 
-    margin: 0 15px;
+    background-color: #D33F49; 
+    margin: 0 1px;
   }
   
   .autocomplete-active {
@@ -330,9 +330,12 @@ html{
   }
 
   #id-picker{
-    border-width: 2px;
+    border-width: 0;
     border-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 5px;
     padding: 5px 20px;
     color: #fff;
   }
@@ -342,11 +345,11 @@ html{
     filter: brightness(200%);
   }
 
-  .fas{
+  .left-sidebar-wrapper .fas, .text-center .fas{
       color: #EFF0D1;
   }
 
-  .fas:hover{
+  .left-sidebar-wrapper .fas:hover, .text-center .fas:hover{
     color: #D7C0D0;
   }
 

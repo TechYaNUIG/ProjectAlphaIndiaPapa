@@ -20,17 +20,18 @@
 		<div class="forms">
 			<form id="form" method="post" action="/users/login">
 				<div class="head1">
-					<div class="head2">TechYa</div>Project Managment
-				</div><br>
-				<input type="text" id="uName" placeholder="username" class="form-control form-rounded smlb">
-				<input type="password" id="password" placeholder="password" class="form-control form-rounded smlb">
-				<input id="loginBtn" type="submit" value="Login" class="btn submit" />
+					<div class="head2">TechYa</div>Project Managment App
+				</div><hr>
+				<input type="text" id="uName" placeholder="username" class="login-txt-input">
+				<input type="password" id="password" placeholder="password" class="login-txt-input">
+				<input id="loginBtn" type="submit" value="Sign in" class="btn submit" />
 				<form id="form" method="post" action="/users/register  ">
-					<input type="text" id="RuName" placeholder="username" class="form-control form-rounded smlb">
-					<input type="password" placeholder="password" id="Rpassword" class="form-control form-rounded smlb">
-					<input type="password" placeholder="re-enter password" id="Rpassword2" class="form-control form-rounded smlb">
+					<input type="text" id="RuName" placeholder="username" class="login-txt-input">
+					<input type="password" placeholder="password" id="Rpassword" class="login-txt-input">
+					<input type="password" placeholder="re-enter password" id="Rpassword2" class="login-txt-input">
 					<input id="regBtn" type="submit" value="Register" class="btn submit" />
-					<a class="btn submit" href="/users/google">Login with Google</a>
+					<hr>
+					<a class="btn submit google-btn" href="/users/google"><span class="fab fa-google"></span> | Sign in with Google</a>
 				</form>
 			</form>
 			
