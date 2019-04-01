@@ -1,15 +1,22 @@
 userHasScrolled = false;
 var currTeam = localStorage.getItem("currentTeam");
+var mobileMessages = false;
 
-function getMessages(handlebarTemp, htmlSection) {
+function getMessages() {
     currTeam = localStorage.getItem("currentTeam");
     $.ajax({
         type: "GET",
         url: "/get-messages/" + currTeam,
         success: function (data) {
-            var template = Handlebars.templates[handlebarTemp];
-            var templateData = template({ messages: data });
-            $(htmlSection).html(templateData);
+            if(!mobileMessages){
+                var template = Handlebars.templates['messages'];
+                var templateData = template({ messages: data });
+                $('#messages').html(templateData);
+            }else{
+                var template = Handlebars.templates['message-page'];
+                var templateData = template({ messages: data });
+                $('#inner-sidebar-wrapper').html(templateData);
+            }   
         }
     });
     scrollToBottom('.message-section', '#messages');
@@ -27,10 +34,11 @@ function scrollToBottom(section, sectionId) {
 
 $(document).ready(function () {
 
-    getMessages('messages', '#messages');
+    getMessages();
 
     $('#message-page').click(function (event) {
-        getMessages('message-page', '#inner-sidebar-wrapper');
+        mobileMessages = true;
+        getMessages();
         userHasScrolled = true; // Temp stop scrolling
         $('#inner-sidebar-wrapper').css("background", "#fff");
     });
