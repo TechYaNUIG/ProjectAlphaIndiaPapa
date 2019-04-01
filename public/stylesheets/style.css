@@ -521,7 +521,13 @@ html{
 
 .tasks-section {
     position: absolute;
-    height: 75%;
+    height: 65%;
+    overflow-y: scroll;
+}
+
+.user-tasks-section{
+    position: absolute;
+    height: 60%;
     overflow-y: scroll;
 }
 
