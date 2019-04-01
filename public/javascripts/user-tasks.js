@@ -162,7 +162,7 @@ $("#tasks").click(function (event) {
                     });
         
         
-                    var template = Handlebars.templates['tasks'];
+                    var template = Handlebars.templates['user-tasks'];
                     var templateData = template({ task: data });
                     $('#tasks').html(templateData);
                 }

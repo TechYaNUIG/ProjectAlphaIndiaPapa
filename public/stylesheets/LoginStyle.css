@@ -1,5 +1,6 @@
 
 .login-page {
+  width: 360px;
   padding: 8% 0 0;
   margin: auto;
 }
@@ -14,21 +15,13 @@ form {
   position: relative;
   z-index: 1;
   background: #efefef;
-  max-width: 400px;
+  max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(221, 221, 221, 0.2), 0 5px 5px 0 rgba(221, 221, 221, 0.2);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 20px;
 }
-
-.login-txt-input{
-  border-radius: 5px;
-  background-color: #fff;
-  width: 100%;
-  resize: none;
-  padding: 10px;
-}
-
 input {
   font-family: sans-serif;
   outline: 0;
@@ -44,16 +37,20 @@ input {
   font-family: sans-serif;
   text-transform: uppercase;
   outline: 0;
+  background: #fc5b57 ;
   width: 100%;
   border: 0;
-  padding: 10px;
-  color: #262730;
-  font-size: 18px;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  border-radius: 20px;
 }
-
+.btn:hover,.btn:active,.btn:focus {
+  background: #c94845;
+}
 .form .message {
   margin: 15px 0 0;
   color: #8d8d8d;
@@ -71,14 +68,8 @@ input {
   text-decoration: none;
   font-size: 18px;
   padding:10px;
-  background: #4285F4;
+  background: #ff5353;
 }
-
-.google-btn:hover{
-  color: #fff;
-}
-
-
 body {
-  background: #262730;
+  background: #747474;
 }

@@ -303,14 +303,14 @@ html{
     position: absolute;
     z-index: 99;
     /*position the autocomplete items to be the same width as the container:*/
-    top: 85%;
+    top: 77%;
     left: 0;
     right: 0;
   }
   .autocomplete-items div {
     padding: 10px;
-    background-color: #D33F49; 
-    margin: 0 1px;
+    background-color: #8d8d8d; 
+    margin: 0 15px;
   }
   
   .autocomplete-active {
@@ -330,12 +330,9 @@ html{
   }
 
   #id-picker{
-    border-width: 0;
+    border-width: 2px;
     border-color: #fff;
-    border-radius: 10px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left-width: 5px;
+    border-radius: 20px;
     padding: 5px 20px;
     color: #fff;
   }
@@ -345,11 +342,11 @@ html{
     filter: brightness(200%);
   }
 
-  .left-sidebar-wrapper .fas, .text-center .fas{
+  .fas{
       color: #EFF0D1;
   }
 
-  .left-sidebar-wrapper .fas:hover, .text-center .fas:hover{
+  .fas:hover{
     color: #D7C0D0;
   }
 
@@ -519,7 +516,7 @@ html{
     padding-left: 0px;
 }
 
-.tasks-section, .teams-section{
+.tasks-section{
     position: absolute;
     height: 75%;
     overflow-y: scroll;

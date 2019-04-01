@@ -133,7 +133,8 @@ $(document).ready(function () {
             }
         });
     });
-    $("#tasks").click(function (event) {
+    
+    });$("#tasks").click(function (event) {
         if (event.target.name) {
             if (event.target.id == "check-complete") {
                 $.ajax({
@@ -199,7 +200,6 @@ $(document).ready(function () {
                 });
             }
         }
-    });
 
 });
 

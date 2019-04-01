@@ -1,0 +1,23 @@
+{{#each task}}
+<div class="list-item">
+	<label class="check-container">
+		<div>
+			<h4> {{task}} </h4>
+			<h5 class="task-user-name">
+				Created by:&nbsp;{{user_name}}<br>
+				{{#if members}}
+				Group members: {{#each members}}{{user_name}},&nbsp;{{/each}}<br>
+				{{/if}}
+				{{#if completed}}Completed by:&nbsp;{{completed_user_name}}{{else if date_due}}
+				Due by: {{formatDate1 date_due}}<br>
+				<span class="task-due-in">{{formatDate2 date_due}}</span>{{else}}
+				{{/if}}
+			</h5>
+		</div>
+
+		<input type="checkbox" id="check-complete" name="{{_id}}" {{#if completed}} checked {{/if}}>
+		<button type="button" id="taskbutton" name="{{_id}}" class="btn btn-rnd btn-task-delete">Delete Task</button>
+		<span class="checkmark"></span>
+	</label>
+</div>
+{{/each}}
