@@ -148,7 +148,7 @@ html{
     clear: both;
 }
 .msg-received div{
-    background-color: #34e7e4;
+    background-color: rgb(23, 167, 227);
     padding: 20px;
     border-left: 10px solid;
     border-radius: 10px;
