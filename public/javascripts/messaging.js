@@ -2,7 +2,16 @@ userHasScrolled = false;
 var currTeam = localStorage.getItem("currentTeam");
 var mobileMessages = false;
 
-function getMessages() {
+function scrollToBottom(section, sectionId) {
+    if (!userHasScrolled) {
+        $(section).scrollTop($(section)[0].scrollHeight);
+        $(section).animate({
+            scrollTop: $(section)[0].scrollHeight - $(sectionId)[0].clientHeight
+        }, "slow");
+    }
+}
+
+function getMessages(goToBottom) {
     currTeam = localStorage.getItem("currentTeam");
     $.ajax({
         type: "GET",
@@ -17,30 +26,28 @@ function getMessages() {
                 var templateData = template({ messages: data });
                 $('#inner-sidebar-wrapper').html(templateData);
             }   
+
+            if(goToBottom){
+                scrollToBottom('.message-section', '#messages');
+            }
         }
     });
-    scrollToBottom('.message-section', '#messages');
+   
     setTimeout(getMessages, 2000);
 }
 
-function scrollToBottom(section, sectionId) {
-    if (!userHasScrolled) {
-        $(section).scrollTop($(section)[0].scrollHeight);
-        $(section).animate({
-            scrollTop: $(section)[0].scrollHeight - $(sectionId)[0].clientHeight
-        }, "slow");
-    }
-}
+
 
 $(document).ready(function () {
 
-    getMessages();
+    getMessages(true);
 
     $('#message-page').click(function (event) {
         mobileMessages = true;
         getMessages();
         userHasScrolled = true; // Temp stop scrolling
         $('#inner-sidebar-wrapper').css("background", "#fff");
+        scrollToBottom('.message-section', '#messages');
     });
 
     $('#send-message').click(function (event) {
@@ -64,11 +71,12 @@ $(document).ready(function () {
                 data: { 'text': messageText },
                 success: function (data) {
                     $('#message-text').val("");
-                    getMessages();
+                    getMessages(true);
+                    
                 }
             });
 
-            scrollToBottom();
+            
 
         }
     });

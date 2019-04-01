@@ -128,26 +128,11 @@ $(document).ready(function () {
             data: { style: "task-update", text: "New task created: " + $('#taskInput').val() },
             success: function (data) {
                 $('#message-text').val("");
+                getMessages(true);
             }
         });
     }
 
-    
-
-    $("#postBtn").click(function (event) {
-        currTeam = localStorage.getItem("currentTeam");
-        $.ajax({
-            url: '/addTask/' + currTeam,
-            type: 'POST',
-            data: { task: $('#taskInput').val(), date_due: $('#taskDeadline').val() },
-            success: function (data) {
-                getTasks();
-                addTaskMessage();
-                $("#taskInput").val("")
-                 $('#taskDeadline').val("")
-            }
-        });
-    });
 
     $('#user-search').keyup(function (e) {
         if ($('#user-search').val() < 1) {
@@ -201,7 +186,7 @@ $(document).ready(function () {
         }
 
         var peopleList = [];
-        if (id = "postBtn") {
+        if (id === "postBtn") {
             var total = $('#people-list li').length;
             $('#people-list li').each(function (index) {
                 if (index == total - 1)
@@ -219,9 +204,10 @@ $(document).ready(function () {
                         date_due:$('#taskDeadline').val()
                     }),
                     success: function (data) {
+                        addTaskMessage();
                         $('#taskInput').val("");
                         $('#people-list').html("<li class='float-right'>" + peopleList[0] + "</li>");
-                        getTasks();
+                        getTasks();                  
                         $('#taskDeadline').val("");
                     }
                 });
