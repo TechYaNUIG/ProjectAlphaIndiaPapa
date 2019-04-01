@@ -417,6 +417,7 @@ html{
 .openbtn {
     font-size: 25px;
     cursor: pointer;
+    padding: 0px;
     color: #1F2833;
     border: none;
     background-color: #EFF0D1;
