@@ -144,7 +144,7 @@ $(document).ready(function () {
                 getTasks();
                 addTaskMessage();
                 $("#taskInput").val("")
-                due_date: $('#taskDeadline').val("")
+                 $('#taskDeadline').val("")
             }
         });
     });
@@ -222,6 +222,7 @@ $(document).ready(function () {
                         $('#taskInput').val("");
                         $('#people-list').html("<li class='float-right'>" + peopleList[0] + "</li>");
                         getTasks();
+                        $('#taskDeadline').val("");
                     }
                 });
             }
