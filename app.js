@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-var keys = require('../ProjectAlphaIndiaPapa/config/Keys');
+var keys = require('./config/Keys');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
