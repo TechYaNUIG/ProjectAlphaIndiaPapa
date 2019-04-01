@@ -141,9 +141,15 @@ router.get('/search-users/:search_string', ensureAuthenticated, (req, res, next)
 });
 
 router.post('/addTask/:id', function (req, res, next) {
+
+    var currUser = {
+        user_id:req.user._id,
+        user_name:req.user.name
+    }
     task = new Task(req.body);
     task.user_name = req.user.name;
     task.team_id = req.params.id;
+    task.members.push(currUser);
     task.save(function (err, savedTask) {
         if (err)
             throw err;
