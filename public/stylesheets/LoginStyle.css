@@ -80,4 +80,5 @@ input {
 
 body {
   background: #262730;
+  overflow-y: visible;
 }
