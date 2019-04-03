@@ -3,12 +3,12 @@ var currTeam = localStorage.getItem("currentTeam");
 var mobileMessages = false;
 
 function scrollToBottom(section, sectionId) {
-    if (!userHasScrolled) {
+    
         $(section).scrollTop($(section)[0].scrollHeight);
         $(section).animate({
             scrollTop: $(section)[0].scrollHeight - $(sectionId)[0].clientHeight
         }, "slow");
-    }
+    
 }
 
 function getMessages(goToBottom) {
@@ -29,6 +29,7 @@ function getMessages(goToBottom) {
 
             if(goToBottom){
                 scrollToBottom('.message-section', '#messages');
+                
             }
         }
     });
