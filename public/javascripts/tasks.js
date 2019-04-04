@@ -209,6 +209,7 @@ $(document).ready(function () {
                         $('#people-list').html("<li class='float-right'>" + peopleList[0] + "</li>");
                         getTasks();                  
                         $('#taskDeadline').val("");
+			users = [];
                     }
                 });
             }
