@@ -13,7 +13,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#postBtn').click(function (event) {
+ /*   $('#postBtn').click(function (event) {
         $.ajax({
             type: "POST",
             url: "/create-team/",
@@ -29,7 +29,7 @@ $(document).ready(function () {
         });
         userIds = [];
         userNames = [];
-    });
+    });*/
 
     $('#user-search').keyup(function (e) {
         if ($('#user-search').val() < 1) {
@@ -86,7 +86,7 @@ $(document).ready(function () {
         }
 
         var peopleList = [];
-        if (id = "postBtn") {
+        if (id === "postBtn") {
             var total = $('#people-list li').length;
             $('#people-list li').each(function (index) {
                 if (index == total - 1)
