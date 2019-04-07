@@ -1,6 +1,7 @@
 $(document).ready(
 	function() {
 		$("#sign-out-button").click(function (event) {
+			localStorage.setItem("currentTeam", "");
 			$.ajax({
 				url:'/users/logout',
 				type:'GET',
